@@ -10,30 +10,30 @@
     --font-sans: "Wix Madefor Display Variable", system-ui, sans-serif;
 
 /* Colors */
-    --color-depths: #1f1d20;
-    --color-lights: #fff4d0;
-    --color-purple: #2f0764;
-    --color-herotxt: #fffefd;
-    --color-fg1: #e00379;
-    --color-fg2: #ffe043;
-    --color-fg2-20: rgba(255, 224, 67, 0.2);
-    --color-bg-1: #ff87c7;
-    --color-bg-2: #ff4043;
-    --color-pg-1: #745ef1;
-    --color-pg-2: #9e37c3;
+    --color-theme-depths: #1f1d20;
+    --color-theme-lights: #fff4d0;
+    --color-theme-purple: #2f0764;
+    --color-theme-herotxt: #fffefd;
+    --color-theme-fg1: #e00379;
+    --color-theme-fg2: #ffe043;
+    --color-theme-fg2-20: rgba(255, 224, 67, 0.2);
+    --color-theme-bg-1: #ff87c7;
+    --color-theme-bg-2: #ff4043;
+    --color-theme-pg-1: #745ef1;
+    --color-theme-pg-2: #9e37c3;
 
     /* Gradients */
 
     --gradient-brand: linear-gradient(
-        135deg,
-        var(--color-bg-1) 0%,
-        var(--color-bg-2) 100%
+        155deg,
+        var(--color-theme-bg-2) 0%,
+        var(--color-theme-bg-1) 100%
     );
 
     --gradient-slogan-box: linear-gradient(
         135deg,
-        var(--color-pg-1) 0%,
-        var(--color-pg-2) 100%
+        var(--color-theme-pg-1) 0%,
+        var(--color-theme-pg-2) 100%
     );
 
 }
@@ -63,14 +63,14 @@
         line-height: 1.35;
     }
 
-    .second-title {
+    .title-secondary {
         font-family: var(--font-sans);
         font-size: 1.5rem;
         font-weight: 500;
         line-height: 1.45;
     }
 
-    .principal-title {
+    .title-principal {
         font-family: var(--font-display);
         font-size: 8.375rem;
         font-weight: 500;

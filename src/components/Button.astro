@@ -1,0 +1,17 @@
+---
+interface Props {
+    href: string
+    text: string
+    variant?: 'lightSurface' | 'darkSurface'
+}
+const { href, text, variant='lightSurface' } = Astro.props;
+const surfaces = {
+    lightSurface: "bg-theme-depths text-theme-lights",
+    darkSurface: "bg-gradient-brand text-theme-lights"
+}
+const baseStyles = "list py-3 px-7 rounded-md w-fit flex items-center justify-center"
+---
+
+<a href={ href } class:list={[ baseStyles, surfaces [variant] ]}>
+    { text }
+</a>
