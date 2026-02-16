@@ -9,14 +9,16 @@ import Testimonial from '../sections/Testimonial.astro';
 ---
 
 <Layout title = "It´s Lotus!">
-<Hero />
-<main class="rounded-bl-2xl">
-    <About />
-    <section class="bg-theme-depths rounded-2xl mb-32">
-        <Slogan />
-        <Services />
-        <Testimonial />
-    </section>
-    <Faq />
-</main>
+    <div class="relative">
+        <main class="relative z-20 rounded-b-2xl bg-theme-lights shadow-2xl mb-[130vh]">
+        <Hero />
+        <About />
+            <section class="bg-theme-depths rounded-2xl mb-32">
+                <Slogan />
+                <Services />
+                <Testimonial />
+            </section>
+        <Faq />
+        </main>
+    </div>
 </Layout>

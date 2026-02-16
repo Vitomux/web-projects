@@ -1,18 +1,12 @@
 ---
 import Contact from "./Contact.astro";
 ---
-<section class="bg-theme-depths sticky top-0">
-    <div class="flex flex-row justify-between p-16">
-        <div>
-            <h1 class="title-secondary text-theme-lights w-68">Be a part of our story. We’ll help you rise.</h1>
-        </div>
-        <div class="w-1/2">
-            <Contact />
-        </div>
-    </div>
-    <div>
-        <div class="flex flex-row list text-theme-lights">
-            <div class="flex flex-col h-[40vh] w-1/2 px-16">
+<section class="bg-theme-depths fixed bottom-0 left-0 w-full -z-10 min-h-screen flex flex-col justify-end">
+        <div class="flex flex-row justify-between p-16 text-theme-lights">
+            <div class="flex flex-col items-start pt-12">
+                <h1 class="title-secondary text-theme-lights w-68 mb-80 mt-20">
+                    Be a part of our story. We’ll help you rise.
+                </h1>
                 <img src="src/assets/tipo-logo.svg" class="w-full" alt="lotus">
                 <ul class=" flex justify-between w-full mt-4">
                     <li>services</li>
@@ -20,10 +14,13 @@ import Contact from "./Contact.astro";
                     <li>contact</li>
                 </ul>
             </div>
-            <div class="flex flex-col items-end w-1/2 p-16 justify-end">
-                <p class="mb-2">Copyright Lotus Software Development 2026</p>
-                <p>Design & developed by Enciende Studio</p>
+            <div class="w-2/3 pt-13">
+                <Contact />
+            <div class="flex flex-col items-end pt-28 justify-end">
+                    <p class="mb-2">Copyright Lotus Software Development 2026</p>
+                    <p>Design & developed by Enciende Studio</p>
             </div>
         </div>
+    </div>
     </div>
 </section>
