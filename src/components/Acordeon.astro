@@ -1,0 +1,20 @@
+---
+import { FAQS } from "../types/questions";
+---
+
+<div class="flex flex-col w-185 ml-16"> {
+    FAQS.map(({ question, answer }) => (
+        <div class="accordion-item mb-6">
+            <div class="flex flex-row justify-between border-b-2 border-theme-purple pb-6">
+            <h3 class="acordeon-title">{question}</h3>
+            <span class="acordeon-title">+</span>
+            </div>
+            <div class="hidden">
+            <p class="font-sans text-xl font-thin my-8">
+                {answer}
+            </p>
+            </div>
+        </div>
+        ))
+    }
+</div>

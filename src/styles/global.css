@@ -36,6 +36,9 @@
         var(--color-theme-pg-2) 100%
     );
 
+    /* Shadows */
+
+    --shadow-theme-box: 0px 4px 20px 1px  rgba(0, 0, 0, 0.25)
 }
 
 /* Styles */

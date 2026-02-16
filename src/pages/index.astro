@@ -1,10 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import About from '../sections/About.astro';
+import Faq from '../sections/Faq.astro';
 import Hero from '../sections/Hero.astro';
+import Services from '../sections/Services.astro';
+import Slogan from '../sections/Slogan.astro';
+import Testimonial from '../sections/Testimonial.astro';
 ---
 
 <Layout title = "It´s Lotus!">
 <Hero />
-<About />
+<main>
+    <About />
+    <section class="bg-theme-depths rounded-2xl mb-32">
+        <Slogan />
+        <Services />
+        <Testimonial />
+    </section>
+    <Faq />
+    </main>
 </Layout>

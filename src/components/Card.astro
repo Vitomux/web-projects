@@ -1,0 +1,31 @@
+---
+import Button from "./Button.astro";
+import { SERVICES } from "../types/services";
+---
+
+{
+    SERVICES.map(({ id, title, text, index }) => (
+        <div class={`bg-theme-lights text-theme-purple shadow-theme-box py-16 px-18 rounded-3xl mb-16  border-white/20 sticky top-${ index  * 32 } mb-40` }>
+            <h1 class="cards-title mb-12 border-b-2 border-theme-purple pb-8">
+                {title}
+            </h1>
+            <div class="flex flex-row justify-around items-center py-6 gap-8">
+                <img 
+                    class="w-58 h-58 object-contain" 
+                    src={`/servicesImg/${id}.png`} 
+                    alt={`Icon for ${title}`}
+                />
+                <div class="flex flex-col w-1/2 justify-center">
+                    <p class="prg mb-10 text-lg">
+                        {text}
+                    </p>
+
+                    <Button 
+                        href={`/services/${id}`}
+                        text="Let's grow"
+                    />
+                </div>
+            </div>
+        </div>
+    ))
+}

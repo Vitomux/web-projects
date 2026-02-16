@@ -1,0 +1,22 @@
+---
+import { TESTIMONIALS } from "../types/testimonials";
+---
+{
+    TESTIMONIALS.map(({testimonial, index}) => (
+        <div class={`flex flex-col justify-center items-center
+            text-theme-purple bg-theme-lights
+            px-13 py-14
+            min-w-105 h-90
+            rounded-2xl
+            ${ index % 2 === 0 ? 'mt-12' : 'mt-0' }`}>
+            <p class="italic-prg text-center mb-3">{testimonial}</p>
+            <div class="flex flex-row">
+                {
+                    Array.from( { length: 5 } ).map( ( ) => 
+                    <div class="bg-gradient-brand w-3.5 mx-1  aspect-square rounded-full"></div>
+                    )
+                }
+            </div>
+        </div>
+    ))
+}
