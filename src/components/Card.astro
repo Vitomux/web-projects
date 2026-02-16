@@ -4,8 +4,8 @@ import { SERVICES } from "../types/services";
 ---
 
 {
-    SERVICES.map(({ id, title, text, index }) => (
-        <div class={`bg-theme-lights text-theme-purple shadow-theme-box py-16 px-18 rounded-3xl mb-16  border-white/20 sticky top-${ index  * 32 } mb-40` }>
+    SERVICES.map(({ id, title, text }, index ) => (
+        <div class={`bg-theme-lights text-theme-purple shadow-theme-box py-16 px-18 rounded-3xl  border-white/20 sticky mb-40` } style={`top: ${(index += .8) * 72}px`}>
             <h1 class="cards-title mb-12 border-b-2 border-theme-purple pb-8">
                 {title}
             </h1>

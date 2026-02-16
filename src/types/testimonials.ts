@@ -27,4 +27,4 @@ export const TESTIMONIALS = [
         index: 7,
         testimonial: 'Smart decisions. Thoughtful details. \nDigital experiences that mature with the business.'
     },
-]
+];
