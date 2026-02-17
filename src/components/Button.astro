@@ -6,10 +6,10 @@ interface Props {
 }
 const { href, text, variant='lightSurface' } = Astro.props;
 const surfaces = {
-    lightSurface: "bg-theme-depths text-theme-lights",
-    darkSurface: "bg-gradient-brand text-theme-lights"
+    lightSurface: "bg-theme-depths text-theme-lights hover:shadow-theme-btn-ls",
+    darkSurface: "bg-gradient-brand text-theme-lights hover:shadow-theme-btn-ds"
 }
-const baseStyles = "list py-3 px-7 rounded-md w-fit flex items-center justify-center"
+const baseStyles = "list py-3 px-7 rounded-md min-w-fit flex items-center justify-center hover:-translate-y-1 duration-300 ease-out focus: translate-y-0 "
 ---
 
 <a href={ href } class:list={[ baseStyles, surfaces [variant] ]}>

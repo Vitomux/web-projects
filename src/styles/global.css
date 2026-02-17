@@ -38,7 +38,9 @@
 
     /* Shadows */
 
-    --shadow-theme-box: 0px 4px 20px 1px  rgba(0, 0, 0, 0.25)
+    --shadow-theme-box:  0px 4px 20px 1px  rgba(0, 0, 0, 0.25) ;
+    --shadow-theme-btn-ls: 0px 3px 20px 1px var(--color-theme-pg-1);
+    --shadow-theme-btn-ds: 0px 3px 20px 1px var(--color-theme-fg1)
 }
 
 /* Styles */

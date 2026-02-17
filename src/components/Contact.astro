@@ -1,3 +1,6 @@
+---
+import Button from "./Button.astro"
+---
 <form class="font-sans  w-full max-w-4xl mx-auto text-theme-light mt-12 pt-8">
 
     <div class="flex flex-col gap-8">
@@ -41,13 +44,11 @@
     </div>
 
     <div class="flex justify-end mt-12">
-        <button 
-        type="submit"
-        class="text-theme-lights underline underline-offset-4 
-                hover:opacity-70 transition-opacity duration-300"
-    >
-        Send Message
-    </button>
-    </div>
+        <Button 
+            href='services'
+            variant= "darkSurface"
+            text= "Send message"
+        />
+</div>
 
 </form>
