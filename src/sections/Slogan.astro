@@ -1,12 +1,68 @@
 <section>
-    <div class="flex flex-col h-[250vh] relative">
-        <div class="flex flex-col originalBox rounded-2xl bg-gradient-slogan h-screen text-theme-lights items-center justify-center sticky top-0">
-            <div class="mask flex flex-col items-center justify-start h-1/4 overflow-hidden">
-                <h1 class="title-secondary">Built with</h1>
-                <h1 class="title-principal">experience</h1>
-                <h1 class="title-secondary">Guided with</h1>
-                <h1 class="title-principal">clarity</h1>
+    <div class="flex flex-col h-[700vh] relative" id="track-el">
+        <div class="flex flex-col place-content-center justify-center originalBox rounded-2xl bg-gradient-slogan h-screen text-theme-lights items-center sticky top-0">
+            <div class="flex flex-col w-full items-center justify-center absolute" id="experience-arr">
+                <h1 class="title-secondary leading-0">Built with</h1>
+                <h1 class="title-principal leading-0">experience</h1>
+            </div>
+            <div class="flex flex-col w-full items-center justify-center absolute" id="clarity-arr">
+                <h1 class="title-secondary leading-0">Guided with</h1>
+                <h1 class="title-principal leading-0">clarity</h1>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    
+    import { gsap } from 'gsap';
+    import { SplitText } from 'gsap/SplitText';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin ( SplitText, ScrollTrigger );
+        
+        const clarity = document.getElementById("clarity-arr")
+        const experience = document.getElementById("experience-arr")
+
+        document.fonts.ready.then(function () {
+
+            const splitExperience = SplitText.create( experience, {
+                mask: "chars",
+                type: "chars",
+            });
+            const splitClarity = SplitText.create(clarity, {
+                mask: "chars",
+                type: "chars", 
+            });
+
+            gsap.set( splitExperience.chars, {
+                yPercent: 100,
+            })
+            
+            gsap.set( splitClarity.chars, {
+                yPercent: 100,
+            })
+            
+            let timeline = gsap.timeline({
+                paused: true,
+                defaults: {
+                    ease: "power1.InOut"
+                },
+                scrollTrigger: {
+                    trigger: '#track-el',
+                    start: "5% top",
+                    end: "bottom bottom",
+                    toggleActions: "play pause resume reset",
+                    scrub: true
+                },
+            })
+            timeline.to(splitExperience.chars, { yPercent: 0, stagger: 0.09});
+            timeline.to( splitExperience.chars, {yPercent: -100, stagger: 0.09}, "+=1.5");
+            timeline.to( splitClarity.chars, { yPercent: 0, stagger: 0.09});
+            timeline.to( splitClarity.chars, {yPercent: -100, stagger: 0.09},  "+=1");
+        })
+        
+    })
+    
+</script>

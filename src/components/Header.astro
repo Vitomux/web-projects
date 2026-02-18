@@ -31,38 +31,33 @@ import Button from "./Button.astro";
     const header = document.getElementById('navCont')
 
     const dinamicNav = gsap.to(navBar, {
-            x: "100%",
             width: 0,
             padding: 0,
             scrollTrigger: {
                 trigger: "body",
-                start: "top top",
-                end: "+=100",
-                scrub: 1,
-                invalidateOnRefresh: true
+                start: "45rem top",
+                end: "+=400",
+                scrub: true,
+                invalidateOnRefresh: true,
             }
         });
 
 
     header?.addEventListener('mouseenter', ( ) => {
         gsap.to( navBar, {
-            x: "0%",
             width: "auto",
             padding: 0,
-            duration: 0.2,
+            duration: 0.3,
             overwrite: "auto",
-            ease: "ease"
         })
         
     })
 
     header?.addEventListener('mouseleave', ( ) => {
         gsap.to( navBar, {
-            x: dinamicNav.scrollTrigger?.progress === 0 ? "0%" : "100%",
             width: dinamicNav.scrollTrigger?.progress === 0 ? "auto" : 0,
             duration: 0.2,
             overwrite: "auto",
-            ease: "ease"
         })
         
     })
