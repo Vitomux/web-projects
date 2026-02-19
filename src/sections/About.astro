@@ -2,7 +2,7 @@
 import Button from "../components/Button.astro"
 ---
 
-<section class="p-16 text-theme-purple mb-124 bg-theme-lights">
+<section class="p-16 text-theme-purple bg-theme-lights relative">
     <div class="mb-32">
         <h1 class="section-title mb-32 w-10/12">
             Lotus helps tech-driven businesses grow even when conditions
@@ -14,16 +14,14 @@ import Button from "../components/Button.astro"
             <p class="prg w-1/3 max-w-100">At Lotus, development expertise meets strategic project leadership — so your product can rise, evolve and reach its full potential.</p>
         </div>
     </div>
-    <div class="flex flex-row justify-center">
-        <div class=" grid grid-rows-12 grid-cols-12 w-1/2 max-h-120" id="images">
-            <img class="col-start-3 col-end-11 row-start-3 row-end-7 rounded-lg shadow-theme-box" src="/public/clients/happy-client-1.png" alt="Happy customer looking to the right">
-            <img class="col-start-2 col-end-5 row-start-5 w-36 rounded-lg shadow-theme-box "  src="/public/clients/happy-client-2.png" alt="Happy customer with a big smile">
-            <img class="col-start-9 col-end-12 row-start-2 w-36 rounded-lg shadow-theme-box" src="/public/clients/happy-client-3.png" alt="Happy customer laughing">
-            <div class="cloneAnchor">
-                <div class="cloenWrapper"></div>
-            </div>
+    <div class="grid grid-rows-12 grid-cols-24 w-full h-dvh mb-100"  id="space-el">
+        <img class="col-start-4 col-end-10 row-start-4 rounded-lg shadow-theme-box" src="/public/clients/happy-client-1.png" alt="Happy customer looking to the right">
+        <img class="col-start-3 col-end-5 row-start-5 w-36 rounded-lg shadow-theme-box "  src="/public/clients/happy-client-2.png" alt="Happy customer with a big smile">
+        <img class="col-start-9 col-end-11 row-start-3 w-32 rounded-lg shadow-theme-box" src="/public/clients/happy-client-3.png" alt="Happy customer laughing">
+        <div class="col-start-9 row-start-8" id="anchor">
+        <div class=" w-27 aspect-square  will-change-transform  bg-gradient-slogan rounded-lg" id="box-el"></div>
         </div>
-        <div class="flex flex-col items-start justify-center w-1/2 ml-18">
+        <div class="flex flex-col items-start justify-center col-start-14 col-end-17 row-start-6">
             <h1 class="title-secondary mb-8 w-90">
                     We turn complexity, uncertainty and raw ideas 
                     into solid, scalable 
@@ -37,3 +35,103 @@ import Button from "../components/Button.astro"
         </div>
     </div>
 </section>
+<script>
+
+import { gsap } from 'gsap'
+import { Flip } from 'gsap/flip';
+import { ScrollTrigger } from  'gsap/ScrollTrigger';
+
+document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(Flip, ScrollTrigger);
+
+    let flipAnimation: gsap.core.Tween | null = null; // Cambiado a Tween para Flip
+    const space = document.getElementById('space-el');
+    const objective = document.getElementById('slogan-box');
+    const anchor = document.getElementById('anchor');
+    
+    let pinnedClon: HTMLElement | null = null;
+    let isClonActive = false;
+
+    function createClon() {
+        if (isClonActive) return;
+        
+        const originalBox = document.getElementById('box-el');
+        if (!originalBox || !anchor || !space) return;
+
+        const originalRect = originalBox.getBoundingClientRect();
+        let anchorRect = anchor.getBoundingClientRect();
+
+        pinnedClon = originalBox.cloneNode(true) as HTMLElement;
+        
+        gsap.set(pinnedClon, {
+            position: "fixed",
+            left: originalRect.left,
+            top: originalRect.top,
+            width: originalRect.width,
+            height: originalRect.height,
+            willChange: "transform",
+            zIndex: 1000
+        });
+
+        anchor.appendChild(pinnedClon);
+        gsap.set(originalBox, { opacity: 0 });
+        isClonActive = true;
+        
+        const state = Flip.getState(pinnedClon);
+
+        gsap.set(pinnedClon, {
+            width: "100%",
+            height: space.offsetHeight,
+            top: anchorRect.top,
+            left: 0,
+        });
+
+        flipAnimation = Flip.from(state, {
+            duration: 1,
+            ease: "power3.inOut",
+            paused: true,
+        });
+    }
+
+    function removeClon() {
+        if (!isClonActive) return;
+        if (pinnedClon) {
+            pinnedClon.remove();
+            pinnedClon = null;
+        }
+        const originalBox = document.getElementById('box-el');
+        gsap.set(originalBox, { opacity: 1 });
+        isClonActive = false;
+        flipAnimation = null;
+    }
+
+    ScrollTrigger.create({
+        trigger: "#space-el",
+        start: "center center",
+        onEnter: createClon,
+        onEnterBack: createClon,
+        onLeaveBack: removeClon,
+    });
+
+    ScrollTrigger.create({
+        trigger: anchor, // o "#anchor"
+        start: "top center",
+        end: ( ) => `+=${space?.offsetHeight ?? 0 }`,
+        scrub: true,
+        onUpdate: (self) => {
+            if (flipAnimation) {
+                flipAnimation.progress(self.progress);
+            }
+            
+            if (self.progress >= 1) {
+                gsap.set(pinnedClon!, { opacity: 0 });
+                gsap.set(objective!, { opacity: 1 });
+            } else {
+                gsap.set(pinnedClon!, { opacity: 1 });
+                gsap.set(objective!, { opacity: 0 });
+            }
+        }
+    });
+});
+
+</script>
