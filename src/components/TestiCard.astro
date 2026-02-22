@@ -1,22 +1,62 @@
 ---
 import { TESTIMONIALS } from "../types/testimonials";
 ---
-{
-    TESTIMONIALS.map(({testimonial, index}) => (
-        <div class={`flex flex-col justify-center items-center
-            text-theme-purple bg-theme-lights
-            px-13 py-14
-            min-w-105 h-90
-            rounded-2xl
-            ${ index % 2 === 0 ? 'mt-12' : 'mt-0' }`}>
-            <p class="italic-prg text-center mb-3">{testimonial}</p>
-            <div class="flex flex-row">
-                {
-                    Array.from( { length: 5 } ).map( ( ) => 
-                    <div class="bg-gradient-brand w-3.5 mx-1  aspect-square rounded-full"></div>
-                    )
+<div class="relative w-full overflow-x-hidden">
+    <div class="flex flex-row mb-32 items-start pt-5" id="marquee-track-el">
+        {
+            TESTIMONIALS.map(({testimonial, index}) => (
+                <div class={`flex flex-col mx-4 justify-center items-center
+                    text-theme-purple bg-theme-lights
+                    px-13 py-14
+                    min-w-90 h-72
+                    rounded-2xl
+                    ${ index % 2 === 0 ? 'mt-12' : 'mt-0' } transition-all   hover:-translate-y-1 duration-300 ease-out`}>
+                    <p class="italic-prg text-center mb-3">{testimonial}</p>
+                    <div class="flex flex-row">
+                        {
+                            Array.from( { length: 5 } ).map( ( ) => 
+                            <div class="bg-gradient-brand w-3.5 mx-1  aspect-square rounded-full"></div>
+                            )
+                        }
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+<script>
+    import { gsap } from "gsap";
+
+    function moveMarquee( ) {
+        const marqueeTrack = document.getElementById("marquee-track-el");
+        if (!marqueeTrack) return;
+
+
+        const originalContent = marqueeTrack.innerHTML;
+        marqueeTrack.innerHTML += originalContent;
+
+
+        requestAnimationFrame(( ) => {
+            const distance = marqueeTrack.scrollWidth / 2;
+
+            const loop = gsap.to(marqueeTrack, {
+                x: `+=${ distance}`, 
+                duration: 32, 
+                ease: "none",
+                repeat: -1,
+                modifiers: {
+                    x: gsap.utils.unitize( x => {
+                        parseFloat( x ) % distance
+                        const rawX = parseFloat( x );
+                        return ((rawX + distance) % distance ) - distance;
+                    })
                 }
-            </div>
-        </div>
-    ))
-}
+            });
+            marqueeTrack.addEventListener('mouseenter', ( )=> gsap.to( loop, {timeScale: 0} ))
+            marqueeTrack.addEventListener('mouseleave', ( )=> gsap.to( loop, {timeScale: 1} ))
+        });
+    }
+
+    moveMarquee(  );
+    document.addEventListener("astro:page-load", moveMarquee);
+</script>

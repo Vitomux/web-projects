@@ -23,8 +23,4 @@ export const TESTIMONIALS = [
         index: 6,
         testimonial: 'Strong vision. Measurable impact. \nInterfaces that convert without sacrificing beauty.'
     },
-    {
-        index: 7,
-        testimonial: 'Smart decisions. Thoughtful details. \nDigital experiences that mature with the business.'
-    },
 ];

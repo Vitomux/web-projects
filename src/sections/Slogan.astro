@@ -1,6 +1,6 @@
 <section>
     <div class="flex flex-col h-[700vh] relative bg-theme-lights" id="track-el">
-        <div class="flex flex-col justify-center originalBox rounded-1xl bg-gradient-slogan w-full h-dvh text-theme-lights items-center sticky top-0" id="slogan-box">
+        <div class="flex flex-col justify-center rounded-1xl bg-gradient-slogan w-full h-dvh  text-theme-lights items-center sticky top-0" id="slogan-box">
             <div class="flex flex-col w-full  items-center justify-items-start absolute" id="experience-arr">
                 <h1 class="title-secondary leading-0">Built with</h1>
                 <h1 class="title-principal leading-0">experience</h1>
@@ -51,14 +51,14 @@
                 },
                 scrollTrigger: {
                     trigger: '#track-el',
-                    start: "5% top",
+                    start: "top top",
                     end: "bottom bottom",
                     toggleActions: "play pause resume reset",
                     scrub: true
                 },
             })
             timeline.to(splitExperience.chars, { yPercent: 0, stagger: 0.09});
-            timeline.to( splitExperience.chars, {yPercent: -100, stagger: 0.09}, "+=1.5");
+            timeline.to( splitExperience.chars, {yPercent: -100, stagger: 0.09}, "+=1");
             timeline.to( splitClarity.chars, { yPercent: 0, stagger: 0.09});
             timeline.to( splitClarity.chars, {yPercent: -100, stagger: 0.09},  "+=1");
         })

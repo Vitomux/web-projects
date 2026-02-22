@@ -2,9 +2,40 @@
 import Card from "../components/Card.astro";
 ---
 
-<section class="flex flex-col pl-16 text-theme-lights">
-    <h1 class="monster-title text-nowrap overflow-hidden">What we build</h1>
+<section class="flex flex-col text-theme-lights mt-12">
+    <div class="flex items-center overflow-hidden" id="starter">
+        <h1 class="monster-title text-nowrap items-center  my-6" id="monster">What we build</h1>
+    </div>
         <div class="flex flex-col items-center px-16 relative h-auto">
             <Card></Card>
     </div>
 </section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    document.addEventListener("DOMContentLoaded", ( )=> {
+        const starter = document.getElementById("starter")
+        const monster = document.getElementById("monster")
+
+        gsap.fromTo( monster,
+            {
+            x: "8%", 
+            duration: 0.8
+            }, 
+            {
+            x: "-20%", duration: 0.8, 
+            ease: "sine.in",
+            scrollTrigger: {
+                trigger: starter,
+                start: "top 96%",
+                end: "68% top",
+                scrub: true,
+            //    markers: true,
+            }
+        })
+    })
+</script>

@@ -2,11 +2,39 @@
 import TestiCard from "../components/TestiCard.astro";
 ---
 
-<section class="overflow-hidden mb-16 pl-16">
-    <h1 class="monster-title text-nowrap text-theme-lights">
+<section class="overflow-hidden mb-16" id="starter-2">
+    <h1 class="monster-title text-nowrap text-theme-lights " id="monster-2">
         For whom we build
     </h1>
-    <div class="flex flex-row gap-8 mb-32">
+    <div class="flex">
             <TestiCard />
     </div>
 </section>
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    document.addEventListener("DOMContentLoaded", ( )=> {
+        const starter2 = document.getElementById("starter-2")
+        const monster2 = document.getElementById("monster-2")
+
+        gsap.fromTo( monster2,
+            {
+            x: "5%", 
+            duration: 0.8
+            }, 
+            {
+            x: "-70%", duration: 0.8, 
+            ease: "sine.in",
+            scrollTrigger: {
+                trigger: starter2,
+                start: "top 96%",
+                end: "68% top",
+                scrub: true,
+            //    markers: true,
+            }
+        })
+    })
+</script>

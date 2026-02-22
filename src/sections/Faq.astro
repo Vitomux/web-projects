@@ -2,13 +2,13 @@
 import Acordeon from "../components/Acordeon.astro"
 ---
 
-<section class="overflow-hidden bg-theme-lights rounded-b-2xl">
+<section class="overflow-hidden bg-theme-lights rounded-b-2xl" id="faq">
     <div class="text-theme-purple h-[200vh]">
-        <h1 class="section-title mb-56 w-3/4 px-16">
+        <h1 class="section-title mb-56 w-3/4 px-16" id="title-el2">
             Great digital products emerge through clarity,
             experience and constant evolution.
         </h1>
-        <div class="border border-theme-purple mb-8 mx-16"></div>
+        <div class="border border-theme-purple mb-8 mx-16" id="line-el2"></div>
         <div class="flex flex-row justify-between">
             <Acordeon />
             <div class= "grid grid-rows-12 grid-cols-12 w-1/2 max-h-120">
@@ -20,3 +20,50 @@ import Acordeon from "../components/Acordeon.astro"
         </div>
     </div>
 </section>
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+
+    gsap.registerPlugin( ScrollTrigger, SplitText )
+
+    document.addEventListener("DOMContentLoaded", ( )=> {
+
+        document.fonts.ready.then( function( ) {
+            const line2 = document.getElementById('line-el2')
+            const title2 = document.getElementById('title-el2')
+            gsap.from( line2, {
+                scrollTrigger: {
+                    trigger: title2,
+                    start: "center center",
+                //    markers: true,
+                },
+                width: "2px",
+                ease: "sine",
+                duration: 1.5
+            })
+            const splitTitle2 =  SplitText.create( title2, {
+                type: "lines, chars",
+                linesClass: "split-lines"
+            } )
+
+            gsap.fromTo( splitTitle2.chars, 
+            {
+                opacity: 0.2, 
+            }, 
+            { 
+                opacity: 1,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: "#faq",
+                   // markers: true,
+                    start: "top bottom",
+                    end: "center bottom",
+                    scrub: true,
+                }
+            })
+        })
+
+
+    })
+</script>

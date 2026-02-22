@@ -12,6 +12,7 @@
 /* Colors */
     --color-theme-depths: #1f1d20;
     --color-theme-lights: #fff4d0;
+    --color-theme-lights-hover: #fceab3;
     --color-theme-purple: #2f0764;
     --color-theme-herotxt: #fffefd;
     --color-theme-fg1: #e00379;
@@ -40,7 +41,9 @@
 
     --shadow-theme-box:  0px 4px 20px 1px  rgba(0, 0, 0, 0.25) ;
     --shadow-theme-btn-ls: 0px 3px 20px 1px var(--color-theme-pg-1);
-    --shadow-theme-btn-ds: 0px 3px 20px 1px var(--color-theme-fg1)
+    --shadow-theme-btn-ds: 0px 3px 20px 1px var(--color-theme-fg1);
+    --shadow-theme-card: 0px 2px 20px -1px var(--color-theme-lights)
+    
 }
 
 /* Styles */
@@ -91,7 +94,7 @@
 
     .monster-title {
         font-family: var(--font-display);
-        font-size: 16.25rem;
+        font-size: 14.25rem;
         font-weight: 500;
     }
 
@@ -106,7 +109,7 @@
         font-family: var(--font-sans);
         font-size: 2rem;
         font-weight: 500;
-        line-height: 1.45;
+        line-height: 2;
     }
 
 }
