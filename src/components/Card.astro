@@ -3,30 +3,64 @@ import Button from "./Button.astro";
 import { SERVICES } from "../types/services";
 ---
 
-{
-    SERVICES.map(({ id, title, text }, index ) => (
-        <div class={`bg-theme-lights text-theme-purple shadow-theme-box py-12 px-14 rounded-3xl  border-white/20 sticky mb-40 max-w-7xl` } style={`top: ${(index += .8) * 72}px`}>
-            <h1 class="cards-title mb-12 border-b-2 border-theme-purple pb-8">
-                {title}
-            </h1>
-            <div class="flex flex-row justify-around items-center py-6 gap-8">
-                <img 
-                    class="w-58 h-58 object-contain" 
-                    src={`/servicesImg/${id}.png`} 
-                    alt={`Icon for ${title}`}
-                />
-                <div class="flex flex-col w-1/2 justify-center">
-                    <p class="prg mb-10 text-lg">
-                        {text}
-                    </p>
-                    <div class="w-1/2">
-                    <Button 
-                        href={`/services/${id}`}
-                        text="Let's grow"
+<div class="flex flex-col items-center px-16 relative" id="card-conteiner-el">
+    {
+        SERVICES.map(({ id, title, text }, index ) => (
+            <div 
+                class="card-el bg-theme-lights text-theme-purple shadow-theme-box py-12 px-14 rounded-3xl sticky border border-white/20 mb-40 max-w-7xl w-full" 
+                style={`top: ${40 + index * 25}px;`}
+            >
+                <h1 class="cards-title mb-12 border-b-2 border-theme-purple pb-8 text-4xl font-bold">
+                    {title}
+                </h1>
+                <div class="flex flex-row justify-around items-center py-6 gap-8">
+                    <img 
+                        class="w-48 h-48 object-contain" 
+                        src={`/servicesImg/${id}.png`} 
+                        alt={`Icon for ${title}`}
                     />
+                    <div class="flex flex-col w-1/2 justify-center">
+                        <p class="prg mb-10 text-lg">
+                            {text}
+                        </p>
+                        <div class="w-1/2">
+                            <Button href={`/services/${id}`} text="Let's grow" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    ))
-}
+        ))
+    }
+</div>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const cards = gsap.utils.toArray(".card-el") as HTMLElement[ ];
+        const totalCards = cards.length;
+        
+        cards.forEach((card, index) => {
+
+            if ( index === cards.length - 1 ) return;
+            const nextCard = cards[index + 1];
+            const scaleFactor = 0.05; 
+            const targetScale = 1 - ( totalCards - index ) * scaleFactor
+
+            gsap.to(card, {
+                scale: targetScale, 
+                transformOrigin: "top center",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: cards[index + 1], 
+                    start: "top 80%", 
+                    end: "top 20%",
+                    scrub: true,
+                }
+            });
+        });
+    });
+</script>
