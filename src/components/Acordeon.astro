@@ -2,7 +2,7 @@
 import { FAQS } from "../types/questions";
 ---
 
-<div class="flex flex-col w-185 ml-16"> 
+<div class="flex flex-col w-3/5 ml-16 z-50"> 
     {FAQS.map(({ question, answer }) => (
         <div class="acordeon-item items-center cursor-pointer h-full border-b-2 border-theme-purple">
             <div class="flex flex-row justify-between self-center py-3">
@@ -10,7 +10,7 @@ import { FAQS } from "../types/questions";
                 <span class="cross-item acordeon-title inline-block transition-transform duration-300">+</span>
             </div>
             <div class="content-item h-0 overflow-hidden">
-                <p class="font-sans text-xl font-thin my-4">
+                <p class="font-sans text-xl font-thin my-4 max-w-148">
                     {answer}
                 </p>
             </div>

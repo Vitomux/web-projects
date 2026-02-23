@@ -7,20 +7,20 @@ import { SERVICES } from "../types/services";
     {
         SERVICES.map(({ id, title, text }, index ) => (
             <div 
-                class="card-el bg-theme-lights text-theme-purple shadow-theme-box py-12 px-14 rounded-3xl sticky border border-white/20 mb-40 max-w-7xl w-full" 
-                style={`top: ${40 + index * 25}px;`}
+                class="card-el bg-theme-lights text-theme-purple shadow-theme-box py-12 px-14 rounded-3xl sticky border border-white/20 mb-40 max-w-[86%]" 
+                style={`top: ${ 40 + index * 25 }px;`}
             >
-                <h1 class="cards-title mb-12 border-b-2 border-theme-purple pb-8 text-4xl font-bold">
+                <h1 class="cards-title mb-8 border-b-2 border-theme-purple pb-8 text-4xl font-bold">
                     {title}
                 </h1>
-                <div class="flex flex-row justify-around items-center py-6 gap-8">
+                <div class="flex flex-row justify-evenly items-center py-6">
                     <img 
-                        class="w-48 h-48 object-contain" 
+                        class="w-56 aspect-square object-contain" 
                         src={`/servicesImg/${id}.png`} 
                         alt={`Icon for ${title}`}
                     />
                     <div class="flex flex-col w-1/2 justify-center">
-                        <p class="prg mb-10 text-lg">
+                        <p class="prg mb-10 text-lg max-w-2xl">
                             {text}
                         </p>
                         <div class="w-1/2">
