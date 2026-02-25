@@ -16,7 +16,7 @@ import { SERVICES } from "../types/services";
                 <div class="flex flex-row justify-evenly items-center py-6">
                     <img 
                         class="w-56 aspect-square object-contain" 
-                        src={`web-projects/services/${id}.png`} 
+                        src={`${import.meta.env.BASE_URL}services/${id}.png`}
                         alt={`Icon for ${title}`}
                     />
                     <div class="flex flex-col w-1/2 justify-center">
