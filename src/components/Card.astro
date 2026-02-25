@@ -1,7 +1,7 @@
 ---
 import Button from "./Button.astro";
 import { SERVICES } from "../types/services";
-const base = "/web-projects";
+
 ---
 
 <div class="flex flex-col items-center px-16 relative" id="card-conteiner-el">
@@ -17,7 +17,7 @@ const base = "/web-projects";
                 <div class="flex flex-row justify-evenly items-center py-6">
                     <img 
                         class="w-56 aspect-square object-contain" 
-                        src={`/servicesimg/${id}.png`} 
+                        src={`web-projects/servicesimg/${id}.png`} 
                         alt={`Icon for ${title}`}
                     />
                     <div class="flex flex-col w-1/2 justify-center">
