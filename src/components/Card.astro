@@ -1,7 +1,8 @@
 ---
 import Button from "./Button.astro";
 import { SERVICES } from "../types/services";
-
+const { id, title } = Astro.props;
+const imgSrc = `/web-projects/servicesimg/${id}.png`
 ---
 
 <div class="flex flex-col items-center px-16 relative" id="card-conteiner-el">
@@ -17,7 +18,7 @@ import { SERVICES } from "../types/services";
                 <div class="flex flex-row justify-evenly items-center py-6">
                     <img 
                         class="w-56 aspect-square object-contain" 
-                        src={`web-projects/servicesimg/${id}.png`} 
+                        src={imgSrc} 
                         alt={`Icon for ${title}`}
                     />
                     <div class="flex flex-col w-1/2 justify-center">
