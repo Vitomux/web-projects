@@ -1,5 +1,6 @@
 ---
 import Contact from "./Contact.astro";
+import tipo from  '../assets/tipo-logo.svg'
 ---
 <section class="bg-theme-depths fixed bottom-0 left-0 w-full -z-10 min-h-screen flex flex-col justify-center ">
         <div class="flex flex-row w-full justify-between px-20 mb-8 text-theme-lights max-w-500 mx-auto">
@@ -7,7 +8,7 @@ import Contact from "./Contact.astro";
                 <h1 class="title-secondary text-theme-lights w-68 mb-80 mt-20">
                     Be a part of our story. We’ll help you rise.
                 </h1>
-                <img src="src/assets/tipo-logo.svg" class="w-full" alt="lotus">
+                <img src={tipo.src} class="w-full" alt="lotus" />
                 <ul class=" flex justify-between w-full mt-4">
                     <li>services</li>
                     <li>about</li>
