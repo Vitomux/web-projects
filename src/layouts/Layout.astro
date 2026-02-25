@@ -10,17 +10,14 @@ import "../styles/global.css"
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		
 		<title>It's Lotus!</title>
-		
 		<link rel="icon" href="/lotus-logo.svg" />
-
 		<meta name = "description" content="Lotus development agency"/>
 		
 	</head>
-	<body class="bg-theme-lights h-screen relative">
+	<body class="relative flex flex-col max-w-500 mx-auto w-full">
 		<Header />
 		<slot />
 		<Footer />

@@ -2,25 +2,57 @@
 import Button from "./Button.astro";
 ---
 
-<header class="flex justify-end px-16 pt-3 w-full fixed z-100" >
-    <div class="flex w-fit" id="navCont" >
-        <div class="bg-theme-depths flex flex-row justify-between items-center px-2 py-2 rounded-sm z-10" >
-            <img src="/public/lotus-nav-logo.svg" alt="lotus logo image" class="w-10 mr-3">
-            <div class="flex justify-end items-center"   id="navBar">
-                <ul class="list text-theme-lights flex justify-between w-fit  gap-12 mx-8 overflow-hidden">
-                    <li>services</li>
-                    <li>about</li>
-                    <li>contact</li>
-                </ul>
+<header class="flex px-4 md:px-10 pt-3 w-full fixed z-100 justify-end max-w-480 mx-auto">
+    
+    <div class="flex w-fit transition-all duration-300" id="navCont">
+        
+        <div class="bg-theme-depths flex flex-row items-center w-fit px-2 py-2 rounded-sm z-10 border border-white/5 shadow-xl">
+            
+            <img src="/public/lotus-nav-logo.svg" alt="lotus logo image" class="w-10">
+            
+            <div class="flex items-center gap-2">
+                <div class="hidden md:flex justify-end items-center" id="navBar">
+                    <ul class="list text-theme-lights flex justify-between w-fit gap-8 mx-8 overflow-hidden whitespace-nowrap">
+                        <li>services</li>
+                        <li>about</li>
+                        <li>faq</li>
+                        <li>contact</li>
+                    </ul>
+                </div>
+
+                <button id="menuToggle" class="flex md:hidden flex-col  gap-1.5 px-3 z-110">
+                    <span class="w-6 h-0.5 bg-white"></span>
+                    <span class="w-6 h-0.5 bg-white"></span>
+                </button>
+
+                <div class="hidden md:block">
+                    <Button 
+                        href='services'
+                        variant="darkSurface"
+                        text="Book a meeting"
+                    />
+                </div>
             </div>
-                <Button 
-                href='services'
-                variant= "darkSurface"
-                text= "Book a meeting"
-            />
         </div>
     </div>
 </header>
+
+<div id="mobileMenu" class="fixed inset-0 bg-theme-depths z-90 flex flex-col items-center justify-center translate-x-full invisible">
+    <ul class="text-theme-lights text-4xl flex flex-col gap-8 text-center font-medium items-center">
+        <li>services</li>
+        <li>about</li>
+        <li>faq</li>
+        <li>contact</li>
+        <li class="pt-4">
+            <Button 
+                href='services'
+                variant="darkSurface"
+                text="Book a meeting"
+            />
+        </li>
+    </ul>
+</div>
+
 <script>
     import gsap from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -28,37 +60,73 @@ import Button from "./Button.astro";
     gsap.registerPlugin(ScrollTrigger);
 
     const navBar = document.getElementById('navBar');
-    const header = document.getElementById('navCont')
+    const header = document.getElementById('navCont');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    const mm = gsap.matchMedia();
 
-    const dinamicNav = gsap.to(navBar, {
+    mm.add("(min-width: 768px)", () => {
+        const dinamicNav = gsap.to(navBar, {
             width: 0,
             padding: 0,
             scrollTrigger: {
+                id: "headerNav",
                 trigger: "body",
                 start: "45rem top",
-                end: "+=400",
+                end: "200",
                 scrub: true,
                 invalidateOnRefresh: true,
             }
         });
 
+        const onEnter = () => {
+            gsap.to(navBar, {
+                width: "auto",
+                padding: 0,
+                duration: 0.3,
+                overwrite: "auto",
+            });
+        };
 
-    header?.addEventListener('mouseenter', ( ) => {
-        gsap.to( navBar, {
-            width: "auto",
-            padding: 0,
-            duration: 0.3,
-            overwrite: "auto",
-        })
-        
-    })
+        const onLeave = () => {
+            gsap.to(navBar, {
+                width: dinamicNav.scrollTrigger?.progress === 0 ? "auto" : 0,
+                duration: 0.2,
+                overwrite: "auto",
+            });
+        };
 
-    header?.addEventListener('mouseleave', ( ) => {
-        gsap.to( navBar, {
-            width: dinamicNav.scrollTrigger?.progress === 0 ? "auto" : 0,
-            duration: 0.2,
-            overwrite: "auto",
-        })
-        
-    })
+        header?.addEventListener('mouseenter', onEnter);
+        header?.addEventListener('mouseleave', onLeave);
+
+        return (  ) => {
+            header?.removeEventListener('mouseenter', onEnter);
+            header?.removeEventListener('mouseleave', onLeave);
+        };
+    });
+
+    let isMenuOpen = false;
+    menuToggle?.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            gsap.to(mobileMenu, { 
+                autoAlpha: 1, 
+                x: 0, 
+                duration: 0.5, 
+                ease: "expo.out" 
+            });
+            document.body.style.overflow = 'hidden';
+        } else {
+            gsap.to(mobileMenu, { 
+                x: "100%", 
+                duration: 0.5, 
+                ease: "expo.in",
+                onComplete: () => {
+                    gsap.set(mobileMenu, { autoAlpha: 0 });
+                }
+            });
+            document.body.style.overflow = '';
+        }
+    });
 </script>

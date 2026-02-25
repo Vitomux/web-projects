@@ -48,70 +48,48 @@
 
 /* Styles */
 
-@layer text-styles { 
-    .list {
-        font-family: var(--font-sans);
-        font-size: 1rem;
-        font-weight: 500;
-        line-height: 1.08;
-    }
-    
-    .prg {
-        font-family: var(--font-sans);
-        font-size: 1.5rem;
-        font-weight: 400;
-        line-height: 1.45;
-    }
-    
-    .italic-prg {
-        font-family: var(--font-sans);
-        font-size: 1rem;
-        font-style: italic;
-        font-weight: 400;
-        line-height: 1.35;
+@layer text-styles {
+    /* Estilos Base (Desktop) */
+    .list { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; line-height: 1.08; }
+    .prg { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 400; line-height: 1.45; }
+    .italic-prg { font-family: var(--font-sans); font-size: 1rem; font-style: italic; font-weight: 400; line-height: 1.35; }
+    .title-secondary { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 500; line-height: 1.45; }
+    .title-principal { font-family: var(--font-display); font-size: 8.375rem; font-weight: 500; line-height: 1.16; }
+    .section-title { font-family: var(--font-sans); font-size: 4rem; font-weight: 500; line-height: 1.25; }
+    .monster-title { font-family: var(--font-display); font-size: 14.25rem; font-weight: 500; }
+    .cards-title { font-family: var(--font-sans); font-size: 3rem; font-weight: 400; line-height: 1.25; }
+    .acordeon-title { font-family: var(--font-sans); font-size: 2rem; font-weight: 500; line-height: 2; }
+
+    /* Tablet (Laptops pequeñas / iPads - Menos de 1024px) */
+    @media (max-width: 1024px) {
+        .title-principal { font-size: 5.5rem; line-height: 1.15; }
+        .monster-title { font-size: 9.5rem; }
+        .section-title { font-size: 3rem; }
+        .cards-title { font-size: 2.25rem; }
+        .acordeon-title { font-size: 1.75rem; }
+        .prg { font-size: 1.25rem; }
     }
 
-    .title-secondary {
-        font-family: var(--font-sans);
-        font-size: 1.5rem;
-        font-weight: 500;
-        line-height: 1.45;
+    /* Tablet Pequeña / Pantallas intermedias (Menos de 768px) */
+    @media (max-width: 768px) {
+        .title-principal { font-size: 4rem; line-height: 1.2; }
+        .monster-title { font-size: 7rem; }
+        .section-title { font-size: 2.5rem; }
+        .cards-title { font-size: 2rem; }
+        .acordeon-title { font-size: 1.5rem; }
+        .prg { font-size: 1.15rem; }
     }
 
-    .title-principal {
-        font-family: var(--font-display);
-        font-size: 8.375rem;
-        font-weight: 500;
-        line-height: 1.16;
+    /* Celulares (Menos de 480px) */
+    @media (max-width: 480px) {
+        .title-principal { font-size: 2.75rem; line-height: 1.25; font-weight: 600; }
+        .monster-title { font-size: 4.5rem; } /* Se reduce drásticamente para no romper el layout */
+        .section-title { font-size: 2rem; line-height: 1.2; }
+        .cards-title { font-size: 1.75rem; line-height: 1.2; }
+        .acordeon-title { font-size: 1.25rem; line-height: 1.5; }
+        .prg { font-size: 1.1rem; line-height: 1.4; }
+        .title-secondary { font-size: 1.25rem; }
     }
-
-    .section-title {
-        font-family: var(--font-sans);
-        font-size: 4rem;
-        font-weight: 500;
-        line-height: 1.25;
-    }
-
-    .monster-title {
-        font-family: var(--font-display);
-        font-size: 14.25rem;
-        font-weight: 500;
-    }
-
-    .cards-title {
-        font-family: var(--font-sans);
-        font-size: 3rem;
-        font-weight: 400;
-        line-height: 1.25;
-    }
-
-    .acordeon-title {
-        font-family: var(--font-sans);
-        font-size: 2rem;
-        font-weight: 500;
-        line-height: 2;
-    }
-
 }
 
 @layer gradients {
@@ -122,4 +100,5 @@
     .bg-gradient-slogan {
         background: var(--gradient-slogan-box);
     }
+
 }

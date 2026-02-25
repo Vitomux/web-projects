@@ -1,13 +1,15 @@
 <section>
-    <div class="flex flex-col h-[700vh] relative bg-theme-lights" id="track-el">
-        <div class="flex flex-col justify-center rounded-1xl bg-gradient-slogan w-full h-dvh  text-theme-lights items-center sticky top-0" id="slogan-box">
-            <div class="flex flex-col w-full  items-center justify-items-start absolute" id="experience-arr">
-                <h1 class="title-secondary leading-0">Built with</h1>
-                <h1 class="title-principal leading-0">experience</h1>
-            </div>
-            <div class="flex flex-col w-full  items-center justify-center absolute" id="clarity-arr">
-                <h1 class="title-secondary leading-0">Guided with</h1>
-                <h1 class="title-principal leading-0">clarity</h1>
+    <div class="max-w-500 mx-auto">
+        <div class="flex flex-col h-[700vh] relative bg-theme-lights" id="track-el">
+            <div class="flex flex-col justify-center rounded-1xl bg-gradient-slogan w-full h-dvh  text-theme-lights items-center sticky top-0" id="slogan-box">
+                <div class="flex flex-col w-full  items-center justify-items-start absolute" id="experience-arr">
+                    <h1 class="title-secondary leading-0">Built with</h1>
+                    <h1 class="title-principal leading-0">experience</h1>
+                </div>
+                <div class="flex flex-col w-full  items-center justify-center absolute" id="clarity-arr">
+                    <h1 class="title-secondary leading-0">Guided with</h1>
+                    <h1 class="title-principal leading-0">clarity</h1>
+                </div>
             </div>
         </div>
     </div>
@@ -25,7 +27,7 @@
         const clarity = document.getElementById("clarity-arr")
         const experience = document.getElementById("experience-arr")
 
-        document.fonts.ready.then(function () {
+        document.fonts.ready.then( function ( ) {
 
             const splitExperience = SplitText.create( experience, {
                 mask: "chars",
