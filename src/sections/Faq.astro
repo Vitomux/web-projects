@@ -3,26 +3,25 @@ import Acordeon from "../components/Acordeon.astro"
 import bgfaq from '../assets/bgfaq-grad.svg'
 ---
 
-<section class="overflow-hidden bg-theme-lights rounded-b-2xl z-10" id="faq">
-    <div class="max-w-500 mx-auto">
-        <div class="text-theme-purple h-[200vh]">
-            <h1 class="section-title mb-56 w-3/4 px-20" id="title-el2">
-                Great digital products emerge through clarity,
-                experience and constant evolution.
-            </h1>
-            <div class="border border-theme-purple mb-8 mx-20" id="line-el2"></div>
-            <div class="flex flex-row justify-between px-4">
+<section class="overflow-hidden bg-theme-lights rounded-b-2xl z-10 mt-24" id="faq">
+        <div class="text-theme-purple flex flex-col max-w-500 mx-auto w-full">
+            <div class="flex flex-col justify-between w-full">
+                <h1 class="section-title w-2/3 px-20 mb-54" id="title-el2">
+                    Great digital products emerge through clarity,
+                    experience and constant evolution.
+                </h1>
+                <div class="border border-theme-purple mx-20" id="line-el2"></div>
+            </div>
+            <div class="flex flex-row justify-between px-4 mt-8 mb-54">
                 <Acordeon />
                 <div class= "grid grid-rows-12 grid-cols-12 w-1/2 max-h-120 mr-20">
-                    <h2 class="prg col-start-6 col-end-13">Our role is to guide that growth — 
+                    <h2 class="prg col-start-6 col-end-13 row-start-1">Our role is to guide that growth — 
                         from uncertainty to stability, from complexity to clarity.
                     </h2>
                     <img class="col-start-1 col-end-14 row-start-5 row-end-12 ml-48" src={bgfaq.src} alt="decorative gradient">
                 </div>
             </div>
         </div>
-
-    </div>
 </section>
 <script>
     import { gsap } from "gsap";

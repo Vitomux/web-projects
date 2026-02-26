@@ -2,15 +2,17 @@
 import Button from "../components/Button.astro";
 ---
 
-<section class="flex flex-col items-center h-screen w-full bg-contain bg-center relative  mb-24 bg-theme-lights z-40">
-<div class="max-w-500 mx-auto mt-32">
-    <img src="/web-projects/bghero-grad.svg" alt="background" class="absolute -z-1 inset-0  will-change-transform" id="follow-el" />
-        <div class="flex flex-col justify-center items-center w-fit h-full" >
-            <h2 class="title-secondary text-center text-theme-purple">Growing digital products in complex <br>environments</h2>
-            <h1 class="title-principal text-theme-herotxt text-center mb-10">Welcome to <br>Lotus!</h1>
-            <Button href="" variant="lightSurface" text="Let´s grow your product" />
-        </div>
-</div>
+<section class="flex flex-col items-center h-screen w-full bg-contain bg-center relative   bg-theme-lights z-40">
+    <div class="flex items-center justify-center max-w-500 mx-auto w-full">
+        <div class="flex flex-col justify-center items-center w-fit aspect-square">
+            <div class="flex w-fit aspect-square">
+                <img src="/web-projects/bghero-grad.svg" alt="background" class="absolute -z-1 inset-0" id="follow-el" />
+            </div>
+                <h2 class="title-secondary text-center text-theme-purple">Growing digital products in complex <br>environments</h2>
+                <h1 class="title-principal text-theme-herotxt text-center mb-10">Welcome to <br>Lotus!</h1>
+                <Button href="" variant="lightSurface" text="Let´s grow your product" />
+            </div>
+    </div>
 </section>
 
 

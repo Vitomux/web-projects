@@ -5,23 +5,38 @@ import tipo from  '../assets/tipo-logo.svg'
 <section class="bg-theme-depths fixed bottom-0 left-0 w-full z-0 min-h-screen flex flex-col justify-center ">
         <div class="flex flex-row w-full justify-between px-20 mb-8 text-theme-lights max-w-500 mx-auto">
             <div class="flex flex-col items-start pt-12">
-                <h1 class="title-secondary text-theme-lights w-68 mb-80 mt-20">
-                    Be a part of our story. We’ll help you rise.
-                </h1>
-                <img src={tipo.src} class="w-full" alt="lotus" />
+                <div class="h-full">
+                    <h1 class="prg font-medium text-theme-lights w-68 mt-20">
+                        Be a part of our story. We’ll help you rise.
+                    </h1>
+                </div>
+                <img src={tipo.src} class="w-full align-bottom" alt="lotus" />
                 <ul class=" flex justify-between w-full mt-4">
                     <li>services</li>
                     <li>about</li>
                     <li>contact</li>
                 </ul>
             </div>
-            <div class="w-2/3 pt-13">
+            <div class="w-1/2 pt-13">
                 <Contact />
             <div class="flex flex-col items-end pt-28 justify-end">
-                    <p class="mb-2">Copyright Lotus Software Development 2026</p>
+                    <p>Copyright Lotus Software Development <span id="year-el"></span></p>
                     <p>Design & developed by Enciende Studio</p>
             </div>
         </div>
     </div>
     </div>
 </section>
+<script>
+
+    document.addEventListener("DOMContentLoaded", ( )=>{
+        const year = new Date( ).getFullYear( )
+        const thisYear = document.getElementById("year-el")
+        
+        if (thisYear) {
+            thisYear.textContent = String(year);
+        }
+    })
+
+
+</script>

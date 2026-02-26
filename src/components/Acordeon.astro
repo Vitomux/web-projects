@@ -5,11 +5,11 @@ import { FAQS } from "../types/questions";
 <div class="flex flex-col w-3/5 ml-16 z-50"> 
     {FAQS.map(({ question, answer }) => (
         <div class="acordeon-item items-center cursor-pointer h-full border-b-2 border-theme-purple">
-            <div class="flex flex-row justify-between self-center py-3">
+            <div class="flex flex-row justify-between self-start">
                 <h3 class="acordeon-title hover:-translate-y-1 duration-300 ease-out">{question}</h3>
                 <span class="cross-item acordeon-title inline-block transition-transform duration-300">+</span>
             </div>
-            <div class="content-item h-0 overflow-hidden">
+            <div class="content-item overflow-hidden h-0">
                 <p class="font-sans text-xl font-thin my-4 max-w-148">
                     {answer}
                 </p>
@@ -18,35 +18,39 @@ import { FAQS } from "../types/questions";
     ))}
 </div>
 <script>
-
     import { gsap } from "gsap";
 
     const acordeonItems = document.querySelectorAll(".acordeon-item");
     
-    acordeonItems.forEach((item) => {
+    const closeAll = ( ) => {
+        acordeonItems.forEach((item) => {
+            const content = item.querySelector('.content-item');
+            const cross = item.querySelector('.cross-item');
+            gsap.to(content, { height: 0, duration: 0.4, ease: "power3.in" });
+            cross?.classList.remove('rotate-45');
+            item.classList.remove('is-active');
+        });
+    };
+
+    const openItem = (item) => {
         const content = item.querySelector('.content-item');
         const cross = item.querySelector('.cross-item');
-        let isOpen = false;
+        gsap.to(content, { height: "auto", duration: 0.5, ease: "power3.out" });
+        cross?.classList.add('rotate-45');
+        item.classList.add('is-active');
+    };
 
-        item.addEventListener('click', () => {
-
-            if (!isOpen) {
-                gsap.to(content, { 
-                    height: "auto", 
-                    duration: 0.5, 
-                    ease: "power2.out" 
-                });
-                cross?.classList.add('rotate-45');
-
-            } else {
-                gsap.to(content, { 
-                    height: 0, 
-                    duration: 0.4, 
-                    ease: "power2.in" 
-                });
-                cross?.classList.remove('rotate-45');
+    acordeonItems.forEach((item) => {
+        item.addEventListener('click', ( ) => {
+            const wasOpen = item.classList.contains('is-active');
+            closeAll( );
+            if (!wasOpen) {
+                openItem(item);
             }
-            isOpen = !isOpen;
         });
     });
+
+    if (acordeonItems.length > 0) {
+        openItem(acordeonItems[0]);
+    }
 </script>

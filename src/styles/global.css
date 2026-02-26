@@ -51,14 +51,14 @@
 @layer text-styles {
     /* Estilos Base (Desktop) */
     .list { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; line-height: 1.08; }
-    .prg { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 400; line-height: 1.45; }
+    .prg { font-family: var(--font-sans); font-size: 1.25rem; font-weight: 400; line-height: 1.40; }
     .italic-prg { font-family: var(--font-sans); font-size: 1rem; font-style: italic; font-weight: 400; line-height: 1.35; }
-    .title-secondary { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 500; line-height: 1.45; }
+    .title-secondary { font-family: var(--font-sans); font-size: 2rem; font-weight: 500; line-height: 1.25; }
     .title-principal { font-family: var(--font-display); font-size: 8.375rem; font-weight: 500; line-height: 1.16; }
-    .section-title { font-family: var(--font-sans); font-size: 4rem; font-weight: 500; line-height: 1.25; }
+    .section-title { font-family: var(--font-sans); font-size: 3rem; font-weight: 500; line-height: 1.25; }
     .monster-title { font-family: var(--font-display); font-size: 14.25rem; font-weight: 500; }
-    .cards-title { font-family: var(--font-sans); font-size: 3rem; font-weight: 400; line-height: 1.25; }
-    .acordeon-title { font-family: var(--font-sans); font-size: 2rem; font-weight: 500; line-height: 2; }
+    .cards-title { font-family: var(--font-sans); font-size: 2rem; font-weight: 500; line-height: 1.25; }
+    .acordeon-title { font-family: var(--font-sans); font-size: 2rem; font-weight: 600; line-height: 3; }
 
     /* Tablet (Laptops pequeñas / iPads - Menos de 1024px) */
     @media (max-width: 1024px) {
@@ -82,13 +82,13 @@
 
     /* Celulares (Menos de 480px) */
     @media (max-width: 480px) {
-        .title-principal { font-size: 2.75rem; line-height: 1.25; font-weight: 600; }
-        .monster-title { font-size: 4.5rem; } /* Se reduce drásticamente para no romper el layout */
-        .section-title { font-size: 2rem; line-height: 1.2; }
-        .cards-title { font-size: 1.75rem; line-height: 1.2; }
-        .acordeon-title { font-size: 1.25rem; line-height: 1.5; }
-        .prg { font-size: 1.1rem; line-height: 1.4; }
-        .title-secondary { font-size: 1.25rem; }
+        .title-principal { font-size: 2.75rem; line-height: 1.25; font-weight: 600; text-align: center;}
+        .monster-title { font-size: 4.5rem; text-align: center} /* Se reduce drásticamente para no romper el layout */
+        .section-title { font-size: 2rem; line-height: 1.2; text-align: center}
+        .cards-title { font-size: 1.75rem; line-height: 1.2; text-align: center}
+        .acordeon-title { font-size: 1.25rem; line-height: 1.5; text-align: center}
+        .prg { font-size: 1.1rem; line-height: 1.4; text-align: center}
+        .title-secondary { font-size: 1.25rem; text-align: center}
     }
 }
 
