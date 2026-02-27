@@ -3,27 +3,27 @@ import Button from "./Button.astro";
 import { SERVICES } from "../types/services";
 ---
 
-<div class="flex flex-col items-center px-16 relative" id="card-conteiner-el">
+<div class="flex flex-col items-center px-6 xl:px-16 relative" id="card-conteiner-el">
     {
         SERVICES.map(({ id, title, text }, index ) => (
             <div 
-                class="card-el bg-theme-lights text-theme-purple shadow-theme-box py-12 px-14 rounded-3xl sticky border border-white/20 mb-40 max-w-[86%]" 
+                class="card-el bg-theme-lights text-theme-purple shadow-theme-box py-6 sm:py-8 md:py-12 px-4 sm:px-10 md:px-14  rounded-3xl sticky border border-white/20 mb-40 w-full sm:max-w-[86%] md:max-w-[64%]" 
                 style={`top: ${ 40 + index * 25 }px;`}
             >
-                <h1 class="cards-title mb-8 border-b-2 border-theme-purple pb-8 text-4xl font-bold">
+                <h1 class="cards-title md:mb-8 border-b-2 border-theme-purple pb-8 text-4xl font-bold">
                     {title}
                 </h1>
-                <div class="flex flex-row justify-evenly items-center py-6">
+                <div class="flex flex-col md:flex-row justify-evenly items-center py-6">
                     <img 
-                        class="w-56 aspect-square object-contain" 
+                        class="w-36 sm:w-48 md:w-56 mb-8 md:mb-0 aspect-square object-contain" 
                         src={`web-projects/services/${id}.png`}
                         alt={`Icon for ${title}`}
                     />
-                    <div class="flex flex-col w-1/2 px-4 justify-center">
-                        <p class="prg mb-10 text-lg max-w-xl">
+                    <div class="flex flex-col w-full md:w-1/2 justify-center">
+                        <p class="prg hidden sm:flex md:visible mb-6  xl:mb-10 text-lg max-w-xl">
                             {text}
                         </p>
-                        <div class="w-1/2">
+                        <div class="xl:w-1/2">
                             <Button href={`/services/${id}`} text="Let's grow" />
                         </div>
                     </div>
