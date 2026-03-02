@@ -3,8 +3,8 @@ import Contact from "./Contact.astro";
 import tipo from  '../assets/tipo-logo.svg'
 import Button from "./Button.astro";
 ---
-<section class="bg-theme-depths fixed bottom-4 left-0 w-full z-0 min-h-screen flex flex-col justify-end">
-        <div class="flex flex-col lg:flex-row w-full justify-between px-8 md:px-20 mb-8 text-theme-lights max-w-500 mx-auto">
+<section class="bg-theme-depths fixed bottom-0 left-0 w-full z-0 flex flex-col justify-end">
+        <div class="flex flex-col lg:flex-row w-full md:justify-between px-8 md:px-20 mb-8 text-theme-lights max-w-500 mx-auto">
             <div class="flex flex-col items-bottom pt-12">
                 <div class="lg:h-full">
                     <h1 class="prg font-medium text-theme-lights w-68 mb-12 sm:mt-20">
@@ -20,9 +20,10 @@ import Button from "./Button.astro";
                 </div>
                 <img src={tipo.src} class="w-full align-bottom" alt="lotus" />
                 <ul class=" flex justify-between w-full mt-4 align-bottom">
-                    <li>services</li>
-                    <li>about</li>
-                    <li>contact</li>
+                        <li><a href="#card-conteiner-el">services</a></li>
+                        <li><a href="#pre-about">about</a></li>
+                        <li><a href="#faq">faq</a></li> 
+                        <li><a href="#">contact</a></li>
                 </ul>
             </div>
             <div class="w-1/2 pt-13 collapse lg:visible">
