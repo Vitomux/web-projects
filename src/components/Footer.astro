@@ -6,12 +6,12 @@ import Button from "./Button.astro";
 <section class="bg-theme-depths fixed bottom-0 left-0 w-full z-0 flex flex-col justify-end">
         <div class="flex flex-col lg:flex-row w-full md:justify-between px-8 md:px-20 mb-8 text-theme-lights max-w-500 mx-auto">
             <div class="flex flex-col items-bottom pt-12">
-                <div class="lg:h-full">
+                <div class="h-full">
                     <h1 class="prg font-medium text-theme-lights w-68 mb-12 sm:mt-20">
                         Be a part of our story. We’ll help you rise.
                     </h1>
                 </div>
-                <div class="flex mb-32 lg:collapse">
+                <div class="flex mb-32 lg:hidden">
                     <Button 
                         href='services'
                         variant="darkSurface"
@@ -26,9 +26,9 @@ import Button from "./Button.astro";
                         <li><a href="#">contact</a></li>
                 </ul>
             </div>
-            <div class="w-1/2 pt-13 collapse lg:visible">
+            <div class="w-1/2 pt-13 hidden lg:visible">
                 <Contact />
-            <div class="flex flex-col items-end pt-28 justify-end collapse lg:visible">
+            <div class="lg:flex flex-col items-end pt-28 justify-end hidden lg:visible">
                     <p>Copyright Lotus Software Development <span id="year-el"></span></p>
                     <p>Design & developed by Enciende Studio</p>
             </div>
