@@ -73,7 +73,7 @@
 
     /* Tablet Pequeña / Pantallas intermedias (Menos de 768px) */
     @media (max-width: 768px) {
-        .title-principal { font-size: 4rem; line-height: 1.2; }
+        .title-principal { font-size: 5rem; line-height: 1.2; }
         .title-secondary { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 550; line-height: 1.35; text-align: center;}
         .monster-title { font-size: 7rem; }
         .section-title { font-size: 2.5rem; }
@@ -84,7 +84,7 @@
 
     /* Celulares (Menos de 480px) */
     @media (max-width: 480px) {
-        .title-principal { font-size: 2.75rem; line-height: 1.25; font-weight: 600; text-align: center;}
+        .title-principal { font-size: 4.5rem; line-height: 1; font-weight: 600; text-align: center;}
         .monster-title { font-size: 4.5rem; text-align: center} /* Se reduce drásticamente para no romper el layout */
         .section-title { font-size: 1.8rem; line-height: 1.2; text-align: start}
         .cards-title { font-size: 1.2rem; line-height: 1.2; text-align: center}
