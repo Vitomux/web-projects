@@ -2,12 +2,12 @@
 import { FAQS } from "../types/questions";
 ---
 
-<div class="flex flex-col w-3/5 ml-16 z-50"> 
+<div class="flex flex-col mx-8 lg:w-3/5 lg:ml-16 lg:mx-0 z-50"> 
     {FAQS.map(({ question, answer }) => (
         <div class="acordeon-item items-center cursor-pointer h-full border-b-2 border-theme-purple">
             <div class="flex flex-row justify-between self-start">
-                <h3 class="acordeon-title hover:-translate-y-1 duration-300 ease-out">{question}</h3>
-                <span class="cross-item acordeon-title inline-block transition-transform duration-300">+</span>
+                <h3 class="acordeon-title hover:-translate-y-1 duration-300 ease-out my-4 lg:my-8">{question}</h3>
+                <span class="flex cross-item acordeon-title transition-transform duration-300 py-4 lg:py-8">+</span>
             </div>
             <div class="content-item overflow-hidden h-0">
                 <p class="font-sans text-xl font-thin my-4 max-w-148">
@@ -20,9 +20,11 @@ import { FAQS } from "../types/questions";
 <script>
     import { gsap } from "gsap";
 
+
     const acordeonItems = document.querySelectorAll(".acordeon-item");
     
-    const closeAll = ( ) => {
+
+    const closeAll = () => {
         acordeonItems.forEach((item) => {
             const content = item.querySelector('.content-item');
             const cross = item.querySelector('.cross-item');
@@ -32,23 +34,29 @@ import { FAQS } from "../types/questions";
         });
     };
 
-    const openItem = (item) => {
+
+    const openItem = (item: Element) => {
         const content = item.querySelector('.content-item');
         const cross = item.querySelector('.cross-item');
-        gsap.to(content, { height: "auto", duration: 0.5, ease: "power3.out" });
+        
+        if (content) {
+            gsap.to(content, { height: "auto", duration: 0.5, ease: "power3.out" });
+        }
+        
         cross?.classList.add('rotate-45');
         item.classList.add('is-active');
     };
 
     acordeonItems.forEach((item) => {
-        item.addEventListener('click', ( ) => {
+        item.addEventListener('click', () => {
             const wasOpen = item.classList.contains('is-active');
-            closeAll( );
+            closeAll();
             if (!wasOpen) {
                 openItem(item);
             }
         });
     });
+
 
     if (acordeonItems.length > 0) {
         openItem(acordeonItems[0]);
