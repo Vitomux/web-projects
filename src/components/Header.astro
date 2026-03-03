@@ -9,15 +9,16 @@ import Button from "./Button.astro";
         <div class="bg-theme-depths justify-between flex flex-row md:items-center w-full md:w-fit px-2 py-2 rounded-sm z-10 border border-white/5 shadow-xl">
             
             <a href="#hero">
-                <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-6 sm:w-10 hover:-translate-y-1 duration-500 ease-out hover:drop-shadow-[0_5px_15px_rgba(224,3,121,1)] active:translate-y-0 active:duration-100 z-11000 active:shadow-none active:contrast-200" />
+                <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-6 sm:w-10 hover:-translate-y-1 duration-500 ease-out hover:drop-shadow-[0_5px_15px_rgba(224,3,121,1)] active:translate-y-0 active:duration-100 z-11000 active:filter-none active:contrast-200" />
             </a>
             
             <div class="flex items-center gap-2">
                 <div class="hidden md:flex justify-end items-center" id="navBar">
                     <ul class="list text-theme-lights flex justify-between w-fit gap-8 mx-8 overflow-hidden whitespace-nowrap">
-                        <li><a href="#card-conteiner-el">services</a></li>
                         <li><a href="#pre-about">about</a></li>
+                        <li><a href="#card-conteiner-el">services</a></li>
                         <li><a href="#faq">faq</a></li> 
+                        <li><a href="#footer">contact</a></li>
                     </ul>
                 </div>
 
@@ -58,7 +59,7 @@ import Button from "./Button.astro";
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/all';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -133,4 +134,46 @@ import { ScrollToPlugin } from 'gsap/all';
         }
     });
 
+function getSamePageAnchor(link: HTMLAnchorElement): string | false {
+    if (
+        link.protocol !== window.location.protocol ||
+        link.host !== window.location.host ||
+        link.pathname !== window.location.pathname ||
+        link.search !== window.location.search
+    ) {
+        return false;
+    }
+    return link.hash;
+}
+
+function scrollToHash(hash: string | false, e?: Event): void {
+    if (!hash) return;
+
+    const elem = document.querySelector<HTMLElement>(hash);
+    if (!elem) return;
+
+    if (e) e.preventDefault();
+
+    const isFixed = getComputedStyle(elem).position === 'fixed';
+
+    gsap.to(window, {
+        scrollTo: { y: isFixed ? document.body.scrollHeight : elem, offsetY: 80 },
+        duration: 2.5,
+        ease: "power3.inOut"
+    });
+}
+
+document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(a => {
+    a.addEventListener('click', e => {
+        scrollToHash(getSamePageAnchor(a), e);
+    });
+});
+
+    const initialHash = window.location.hash;
+    if (initialHash) {
+    const initialElem = document.querySelector<HTMLElement>(initialHash);
+    if (initialElem && getComputedStyle(initialElem).position !== 'fixed') {
+        scrollToHash(initialHash);
+    }
+}
 </script>
