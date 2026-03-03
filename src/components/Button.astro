@@ -9,7 +9,7 @@ const surfaces = {
     lightSurface: "bg-theme-depths text-theme-lights hover:shadow-theme-btn-ls",
     darkSurface: "bg-gradient-brand text-theme-lights hover:shadow-theme-btn-ds"
 }
-const baseStyles = "list p-2.5 sm:py-3 sm:px-7 rounded-md min-w-fit flex items-center justify-center hover:-translate-y-1 duration-300 ease-out focus: translate-y-0 z-11000"
+const baseStyles = "list p-2.5 sm:py-3 sm:px-7 rounded-md min-w-fit flex items-center justify-center hover:-translate-y-1 duration-500 ease-out active:translate-y-0 active:duration-100 z-11000 active:shadow-none active:contrast-200"
 ---
 
 <a href={ href } class:list={[ baseStyles, surfaces [variant] ]}>

@@ -9,7 +9,7 @@ import Button from "./Button.astro";
         <div class="bg-theme-depths justify-between flex flex-row md:items-center w-full md:w-fit px-2 py-2 rounded-sm z-10 border border-white/5 shadow-xl">
             
             <a href="#hero">
-                <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-6 sm:w-10" />
+                <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-6 sm:w-10 hover:-translate-y-1 duration-500 ease-out hover:drop-shadow-[0_5px_15px_rgba(224,3,121,1)] active:translate-y-0 active:duration-100 z-11000 active:shadow-none active:contrast-200" />
             </a>
             
             <div class="flex items-center gap-2">
@@ -40,9 +40,9 @@ import Button from "./Button.astro";
 
 <div id="mobileMenu" class="fixed inset-0 bg-theme-depths z-90 flex flex-col items-center justify-center translate-x-full invisible">
     <ul class="text-theme-lights text-4xl flex flex-col gap-8 text-center font-medium items-center">
-        <li><a href="#card-conteiner-el">services</a></li>
-        <li><a href="#pre-about">about</a></li>
-        <li><a href="#faq">faq</a></li> 
+        <li><a href="card-conteiner-el">services</a></li>
+        <li><a href="pre-about">about</a></li>
+        <li><a href="faq">faq</a></li> 
         <li><a href="#">contact</a></li>
         <li class="pt-4">
             <Button 
@@ -58,8 +58,9 @@ import Button from "./Button.astro";
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/all';
 
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     const navBar = document.getElementById('navBar');
     const header = document.getElementById('navCont');
@@ -131,6 +132,5 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
             document.body.style.overflow = '';
         }
     });
-
 
 </script>

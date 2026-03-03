@@ -3,7 +3,7 @@ import Contact from "./Contact.astro";
 ---
 
 <section class="back fixed flex flex-col items-end justify-center w-full h-screen  border-l-purple-200 z-100 translate-x-full" id="contact-overlay">
-    <div class="w-1/2 h-dvh flex flex-col bg-theme-depths justify-center  border px-8 border-white/8 shadow-x min-h-fit shadow-theme-box" id="contact-panel">
+    <div class="w-1/2 h-screen flex flex-col bg-theme-depths justify-center  border px-8 border-white/8 shadow-x min-h-fit shadow-theme-box" id="contact-panel">
         <p class="title-secondary text-theme-lights">Tell us and start growing</p>
         <Contact />
     </div>
@@ -28,16 +28,15 @@ import gsap from 'gsap'
             ease: "expo.out",
         })
         .to(contactOverlay, {
-            backdropFilter: "blur(24px)",
-            backgroundColor: "rgba(120, 80, 220, 0.24)",
-            duration: 0.08,
+            backdropFilter: "blur(34px)",
+            backgroundColor: "rgba(00, 10, 190, 0.44)",
+            duration: 0.06,
             ease: "none"
         })
 
             
         bookBtn.forEach( element => {
             element.addEventListener('click', ( e )=>{
-                e.preventDefault( );
                 timeLine.play( );
             })
             
