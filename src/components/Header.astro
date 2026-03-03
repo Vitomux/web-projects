@@ -18,7 +18,6 @@ import Button from "./Button.astro";
                         <li><a href="#card-conteiner-el">services</a></li>
                         <li><a href="#pre-about">about</a></li>
                         <li><a href="#faq">faq</a></li> 
-                        <li><a href="#">contact</a></li>
                     </ul>
                 </div>
 
@@ -133,25 +132,5 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
         }
     });
 
-    const bookBtn = document.querySelector('a[href="#contact-window"]')
-    const contactOverlay = document.getElementById( 'contact-overlay' )
-    const panel = document.getElementById('contact-panel')
 
-    bookBtn?.addEventListener('click', ( )=>{
-            gsap.to(contactOverlay, {
-                autoAlpha: 1,
-                x: 0,
-                duration: 0.5, 
-                ease: "expo.out",
-            })
-            contactOverlay?.classList.add("bg-theme-bg-1/36","backdrop-blur-xl")
-    })
-
-    contactOverlay?.addEventListener('click', ( )=>{
-            gsap.to(contactOverlay,{
-                x: "100%",
-                duration: 0.5,
-                ease: "expo.in"
-            }) 
-        })
 </script>

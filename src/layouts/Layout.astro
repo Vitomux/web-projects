@@ -43,6 +43,46 @@ import "../styles/global.css"
 			}
 
 			init( );
+
+		const bookBtn = document.querySelectorAll('a[href="#contact-window"]')
+        const contactOverlay = document.getElementById( 'contact-overlay' )
+        
+        let timeLine = gsap.timeline({
+            defaults: {
+                ease: "expo.out",
+            }
+        })
+            
+        bookBtn?.addEventListener('click', ( )=>{
+            timeLine.to(contactOverlay, {
+                autoAlpha: 1,
+                x: "0",
+                duration: 0.5, 
+                ease: "expo.out",
+            })
+            
+            .to(contactOverlay, {
+                backdropFilter: "blur(24px)",
+                backgroundColor: "rgba(120, 80, 220, 0.24)",
+                duration: 0.08,
+                ease: "none"
+            })
+        })
+
+        contactOverlay?.addEventListener('click', ( )=>{
+        
+        timeLine.to(contactOverlay, {
+                backdropFilter: "blur(0px)",
+                backgroundColor: "rgba(120, 80, 220, 0)",
+                duration: 0.08,
+                ease: "none"
+            })
+                .to(contactOverlay,{
+                    x: "100%",
+                    duration: 0.5,
+                    ease: "expo.in"
+                }) 
+            })
 			
 			
 		</script>
