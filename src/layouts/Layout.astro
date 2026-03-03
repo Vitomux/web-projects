@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import Footer from "../components/Footer.astro";
+import ContactWindow from "../components/ContactWindow.astro";
 import '@fontsource-variable/funnel-display';
 import '@fontsource-variable/wix-madefor-display' ;
 import "../styles/global.css"
@@ -18,7 +19,9 @@ import "../styles/global.css"
 		
 	</head>
 	<body class="relative flex flex-col min-h-screen bg-theme-depths">
+		
 		<Header />
+		<ContactWindow />
 		<slot />
 		<Footer />
 		<script>

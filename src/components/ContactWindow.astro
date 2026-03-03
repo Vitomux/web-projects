@@ -1,0 +1,35 @@
+---
+import Contact from "./Contact.astro";
+---
+
+<section class="back fixed flex flex-col items-end justify-center w-full h-screen  border-l-purple-200 z-100 translate-x-full" id="contact-overlay">
+    <div class="w-1/2 h-dvh flex flex-col bg-theme-depths justify-center  border px-8 border-white/8 shadow-x min-h-fit" id="contact-panel">
+        <p class="title-secondary text-theme-lights">Tell us to start growing</p>
+        <Contact />
+    </div>
+</section>
+<script>
+    import gsap from "gsap"
+
+    const bookBtn = document.querySelector('a[href="#contact-window"]')
+    const contactOverlay = document.getElementById( 'contact-overlay' )
+    const panel = document.getElementById('contact-panel')
+
+    bookBtn?.addEventListener('click', ( )=>{
+            gsap.to(contactOverlay, {
+                autoAlpha: 1,
+                xPercent: 0,
+                duration: 0.5, 
+                ease: "expo.out",
+            })
+            contactOverlay?.classList.add("bg-theme-purple/24","backdrop-blur-xl")
+    })
+
+    contactOverlay?.addEventListener('click', ( )=>{
+            gsap.to(contactOverlay,{
+                xPercent: 100,
+                duration: 0.5,
+                ease: "expo.in"
+            }) 
+        })
+</script>
