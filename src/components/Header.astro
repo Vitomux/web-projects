@@ -68,7 +68,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     
-    const mm = gsap.matchMedia();
+    const mm = gsap.matchMedia( );
 
     mm.add("(min-width: 768px)", () => {
         const dinamicNav = gsap.to(navBar, {
