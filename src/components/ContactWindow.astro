@@ -2,18 +2,18 @@
 import Contact from "./Contact.astro";
 ---
 
-<section class="back fixed flex flex-col items-end justify-center w-full h-screen  border-l-purple-200 z-100 translate-x-full" id="contact-overlay">
-    <div class="w-1/2 h-screen flex flex-col bg-theme-depths justify-center  border px-8 border-white/8 shadow-x min-h-fit shadow-theme-box" id="contact-panel">
-        <p class="title-secondary text-theme-lights">Tell us and start growing</p>
+<section class="back fixed flex flex-col items-end w-full h-screen border-l-purple-200 z-100 translate-x-full" id="contact-overlay">
+    <div class="py-8 w-3/4 md:w-1/2 h-dvh md:h-screen flex flex-col justify-center bg-theme-depths border px-8 border-white/8 shadow-x min-h-fit shadow-theme-box z-200" id="contact-panel">
+        <p class="title-secondary text-theme-lights" id="tell-us">Tell us and start growing</p>
         <Contact />
     </div>
 </section>
 <script>
-
 import gsap from 'gsap'
     
         const bookBtn = document.querySelectorAll('a[href="#contact-window"]')
         const contactOverlay = document.getElementById( 'contact-overlay' )
+        const contactLogo = document.getElementById('contact-logo')
         
         let timeLine = gsap.timeline({
             paused: true,
@@ -30,7 +30,7 @@ import gsap from 'gsap'
         .to(contactOverlay, {
             backdropFilter: "blur(34px)",
             backgroundColor: "rgba(00, 10, 190, 0.44)",
-            duration: 0.06,
+            duration: 0.2,
             ease: "none"
         })
 
@@ -43,6 +43,14 @@ import gsap from 'gsap'
         });
 
         contactOverlay?.addEventListener('click', ( )=>{
+            if( event!.target !== contactOverlay){
+                return
+            }
+                timeLine.reverse( )
+        })
+
+        contactLogo?.addEventListener('click', ( )=>{   
             timeLine.reverse( )
         })
+
 </script>

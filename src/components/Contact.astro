@@ -1,54 +1,82 @@
 ---
 import Button from "./Button.astro"
 ---
-<form class="prg w-full mx-auto text-theme-light -mb-10 mt-12 pt-8">
-
-    <div class="flex flex-col gap-8">
-
-    <input 
-        type="text" 
-        placeholder="Your Name"
-        class="bg-transparent border-b border-theme-lights
-                pb-4  outline-none
-                placeholder:text-theme-lights
-                focus:border-theme-lights transition-colors duration-300"
-    />
-
-    <input 
-        type="email" 
-        placeholder="Your Email"
-        class="bg-transparent border-b border-theme-lights
-                pb-4  outline-none
-                placeholder:text-theme-lights
-                focus:border-theme-lights transition-colors duration-300"
-    />
-
-    <input 
-        type="tel" 
-        placeholder="Your Phone"
-        class="bg-transparent border-b border-theme-lights
-                pb-4  outline-none
-                placeholder:text-theme-lights
-                focus:border-theme-lights transition-colors duration-300"
-    />
-
-    <textarea 
-        placeholder="Your Message"
-        rows="4"
-        class="bg-transparent border-b border-theme-lights 
-                pb-4  outline-none resize-none
-                placeholder:text-theme-lights
-                focus:border-theme-light transition-colors duration-300"
-    ></textarea>
-
-    </div>
-
-    <div class="flex justify-end mt-12 z-2000">
-        <Button 
-            href='services'
-            variant= "darkSurface"
-            text= "Send message"
-        />
+<div class="w-full flex flex-col justify-center text-theme-light -mb-10 mt-12 pt-8 h-full">
+    <div class="hidden flex flex-col w-full items-center justify-between h-full text-theme-lights -mt-46" id="succes-el">
+    <h1 class="cards-title border-b-1 pb-4 border-theme-lights">Excellent! thanks for reaching us!</h1>
+    <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-2/6 hover:-translate-y-1 duration-500 ease-out hover:drop-shadow-[0_5px_15px_rgba(224,3,121,1)] active:translate-y-0 active:duration-100 z-11000 active:filter-none active:contrast-200" id="contact-logo" />
+    <p class="cards-title  border-b-1 pb-4 border-theme-lights">We´ll be reaching you</p>
 </div>
+    <form class="prg text-theme-lights-bg visible" id="form-el">
+        <div class="flex flex-col gap-8">
+        <input 
+            type="text" 
+            placeholder="Your Name"
+            class="bg-transparent border-b border-theme-lights
+                    pb-4  outline-none
+                    placeholder:text-theme-lights
+                    focus:border-theme-lights transition-colors duration-300"
+        />
+    
+        <input 
+            type="email" 
+            placeholder="Your Email"
+            class="bg-transparent border-b border-theme-lights
+                    pb-4  outline-none
+                    placeholder:text-theme-lights
+                    focus:border-theme-lights transition-colors duration-300"
+        />
+    
+        <input 
+            type="tel" 
+            placeholder="Your Phone"
+            class="bg-transparent border-b border-theme-lights
+                    pb-4  outline-none
+                    placeholder:text-theme-lights
+                    focus:border-theme-lights transition-colors duration-300"
+        />
+    
+        <textarea 
+            placeholder="Your Message"
+            rows="4"
+            class="bg-transparent border-b border-theme-lights 
+                    pb-4  outline-none resize-none
+                    placeholder:text-theme-lights
+                    focus:border-theme-light transition-colors duration-300"
+        ></textarea>
+    
+        </div>
+    
+        <div class="flex justify-end mt-12 z-2000">
+            <Button 
+                href='#form'
+                variant= "darkSurface"
+                text= "Send message"
+            />
+    </div>
+    </form>
+</div>
+<script>
 
-</form>
+    const formBtns = document.querySelector('a[href="#form"]')
+    const succes = document.getElementById('succes-el')
+    const formEl = document.getElementById('form-el')
+    const tellUs = document.getElementById('tell-us')
+
+    
+    formBtns?.addEventListener('click', ( )=> {
+
+        const inputs = formEl?.querySelectorAll('input, textarea');
+        const allFilled = Array.from( inputs || [ ]).every(input => input.value.trim() !== "");
+
+        if(allFilled){
+            succes?.classList.replace("hidden", "visible");
+            formEl?.classList.replace("visible", "hidden")
+            tellUs?.classList.add("collapse")
+        } else {
+            alert("Please fill out all fields before sending.");
+        }
+
+    })
+    
+</script>
