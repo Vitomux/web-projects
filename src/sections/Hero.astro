@@ -8,11 +8,20 @@ import Button from "../components/Button.astro";
             <div class="flex w-fit aspect-square overflow-visible">
                 <img src="/web-projects/bghero-grad.svg" alt="background" class="absolute z-0 inset-0  w-full" id="follow-el" />
             </div>
+            <div class="z-2 flex flex-col justify-center items-center w-fit aspect-square  opacity-0 blur-md transition-all duration-500 ease-out" id="hero-content">
                 <h2 class="title-secondary text-center text-theme-purple z-1">Growing digital products in complex <br>environments</h2>
                 <h1 class="title-principal text-theme-purple sm:text-theme-herotxt text-center mb-10 z-1">Welcome to <br>Lotus!</h1>
                 <Button href={'#contact-window'} variant="lightSurface" text="Let´s grow your product" />
             </div>
+            </div>
     </div>
 </section>
+<script>
+    const heroCont = document.getElementById('hero-content')
+    
+    document.addEventListener("DOMContentLoaded", ( ) => {
+        heroCont?.classList.remove("opacity-0", "blur-md")
+    })
+</script>
 
 

@@ -1,18 +1,18 @@
 ---
 import Button from "./Button.astro"
-const {variant} = Astro.props
 ---
-<div class={`contact-component h-full ${variant === "overlay" ? "is-overlay" : ""}`} >
+<div class={`contact-component h-full`} >
     <div class="w-full flex flex-col justify-between text-theme-light h-full relative">
         <div class="absolute opacity-0 blur-md transition-all duration-500 ease-out flex flex-col w-full items-center justify-center h-full text-theme-lights " id="succes-el">
-        <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-2/6 hover:-translate-y-1 duration-500 ease-out hover:drop-shadow-[0_5px_15px_rgba(224,3,121,1)] active:translate-y-0 active:duration-100 z-11000 active:filter-none active:contrast-200 pointer-events-auto mb-16" id="contact-logo" />
-        <p class="cards-title  border-b-1 pb-4 border-theme-lights">We´ll be reaching you</p>
+        <img src="/web-projects/lotus-nav-logo.svg" alt="lotus logo image" class="w-1/6 hover:-translate-y-1 duration-500 ease-out hover:drop-shadow-[0_5px_15px_rgba(224,3,121,1)] active:translate-y-0 active:duration-100 z-11000 active:filter-none active:contrast-200 pointer-events-auto mb-16" id="contact-logo" />
+        <h1 class="title-secondary text-center w-2/3">Our team will contact you shortly.</h1>
         </div>
         <form class="prg text-theme-lights-bg visible z-200" id="form-el">
             <div class="flex flex-col gap-8">
             <input 
                 type="text" 
                 placeholder="Your Name"
+                name="name"
                 class="bg-transparent border-b border-theme-lights
                         pb-4  outline-none
                         placeholder:text-theme-lights
@@ -22,6 +22,7 @@ const {variant} = Astro.props
             <input 
                 type="email" 
                 placeholder="Your Email"
+                name="email"
                 class="bg-transparent border-b border-theme-lights
                         pb-4  outline-none
                         placeholder:text-theme-lights
@@ -31,6 +32,7 @@ const {variant} = Astro.props
             <input 
                 type="tel" 
                 placeholder="Your Phone"
+                name="phone"
                 class="bg-transparent border-b border-theme-lights
                         pb-4  outline-none
                         placeholder:text-theme-lights
@@ -40,6 +42,7 @@ const {variant} = Astro.props
             <textarea 
                 placeholder="Your Message"
                 rows="4"
+                name="message"
                 class="bg-transparent border-b border-theme-lights 
                         pb-4  outline-none resize-none
                         placeholder:text-theme-lights
@@ -60,19 +63,33 @@ const {variant} = Astro.props
 </div>
 <script>
 
-document.querySelectorAll('.contact-component.is-overlay').forEach(component => {
+document.querySelectorAll('.contact-component').forEach(component => {
 
     const succes = component.querySelector('#succes-el')
-    const formEl = component.querySelector('#form-el')
     const formBtns = component.querySelectorAll('a[href="#form"]')
     const tellUs = document.getElementById('tell-us')
+    
+    const formEl = component.querySelector('#form-el') as HTMLFormElement
+    const { name, email, phone, message } = formEl.elements as typeof formEl.elements & {
+        name: HTMLInputElement
+        email: HTMLInputElement
+        phone: HTMLInputElement
+        message: HTMLTextAreaElement
+    }
+
+    const fields = [name, email, phone, message]
+
+
 
     formBtns.forEach(formBtn => {
         formBtn.addEventListener('click', ( ) => {
-            succes?.classList.remove("opacity-0", "blur-md")
-            succes?.classList.add("opacity-100", "blur-0")
-            formEl?.classList.replace("visible", "hidden")
-            tellUs?.classList.replace("flex","hidden")
+            if( fields.some( (field) => field.value.trim( ) === "" )){
+                return message.value = "You need to fill the inputs man, come on"
+            }
+                succes?.classList.remove("opacity-0", "blur-md")
+                succes?.classList.add("opacity-100", "blur-0")
+                formEl?.classList.replace("visible", "hidden")
+                tellUs?.classList.replace("flex","hidden")
         })
     })
 })
