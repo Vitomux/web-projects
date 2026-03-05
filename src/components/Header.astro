@@ -39,12 +39,11 @@ import Button from "./Button.astro";
     </div>
 </header>
 
-<div id="mobileMenu" class="fixed inset-0 bg-theme-depths z-90 flex flex-col items-center justify-center translate-x-full invisible">
-    <ul class="text-theme-lights text-4xl flex flex-col gap-8 text-center font-medium items-center">
-        <li><a href="card-conteiner-el">services</a></li>
-        <li><a href="pre-about">about</a></li>
-        <li><a href="faq">faq</a></li> 
-        <li><a href="#">contact</a></li>
+<div id="mobileMenu" class="fixed inset-0 bg-theme-depths z-90 flex flex-col items-end justify-center p-8  translate-x-full invisible">
+    <ul class="text-theme-lights text-2xl flex flex-col gap-8 text-center font-medium items-end justify-center h-full">
+        <li><a href="#pre-about" class="border-b-1 border-theme-lights pb-2">about</a></li>
+        <li><a href="#card-conteiner-el" class="border-b-1 border-theme-lights pb-2">services</a></li>
+        <li><a href="#faq" class="border-b-1 border-theme-lights pb-2">faq</a></li> 
         <li class="pt-4">
             <Button 
                 href='#contact-window'
@@ -152,15 +151,25 @@ function scrollToHash(hash: string | false, e?: Event): void {
     const elem = document.querySelector<HTMLElement>(hash);
     if (!elem) return;
 
-    if (e) e.preventDefault();
+    if (e) e.preventDefault( );
 
     const isFixed = getComputedStyle(elem).position === 'fixed';
-
+    
+    isMenuOpen = !isMenuOpen;
     gsap.to(window, {
         scrollTo: { y: isFixed ? document.body.scrollHeight : elem, offsetY: 80 },
         duration: 2.5,
         ease: "power3.inOut"
     });
+        gsap.to(mobileMenu, { 
+        x: "100%", 
+        duration: 0.5, 
+        ease: "expo.in",
+        onComplete: ( ) => {
+            gsap.set(mobileMenu, { autoAlpha: 0 });
+        }
+    });
+    document.body.style.overflow = '';
 }
 
 document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(a => {
