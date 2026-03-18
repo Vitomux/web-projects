@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             scrollTrigger: {
                 trigger: '#track-el',
                 start: "top top",
-                end: "+=2500",
+                end: "+=2000",
                 pin: true,
                 scrub: true,       
                 anticipatePin: 1,
@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         master.to(splitClarity.chars, {
             yPercent: 0,
             stagger: 0.04,
-            duration: 0.8,
+            duration: 0.4,
             ease: "power4.out"
-        }, 1.8);
+        }, 2);
 
         // ESCENA 4 
         master.to(splitClarity.chars, {
