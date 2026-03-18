@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         trigger: space,
         start: "center center",
         end: ( ) => `+=${(space?.offsetHeight ?? 0) - ((originalBox?.offsetTop ?? 0) - ( originalBox?.offsetHeight ?? 0 )) + gridCompen}`, 
-        scrub: true,
+        scrub: 2,
 
         onEnter: createClon,
         onEnterBack: createClon,
