@@ -1,5 +1,5 @@
 <section>
-        <div class="flex flex-col w-full h-[300svh] relative bg-theme-lights-bg" id="track-el">
+        <div class="flex flex-col w-full h-[348svh] relative bg-theme-lights-bg" id="track-el">
             <div class="flex flex-col justify-center rounded-1xl bg-gradient-slogan w-full h-dvh  text-theme-lights items-center sticky top-0" id="slogan-box">
                 <div class="flex flex-col w-full  items-center justify-items-start absolute" id="experience-arr">
                     <h1 class="title-secondary leading-0">Built with</h1>
@@ -22,62 +22,48 @@
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
 
-    const clarity = document.getElementById("clarity-arr");
-    const experience = document.getElementById("experience-arr");
+    document.fonts.ready.then(() => {
+        // Config central
+        const TOTAL = 5;
+        const SCENES = [
+            { id: "experience-arr", inAt: 0,   outAt: 1   },
+            { id: "clarity-arr",    inAt: 2.5, outAt: 3.6 },
+        ];
 
-    document.fonts.ready.then(( ) => {
-        const splitExperience = new SplitText(experience, {
-            type: "chars",
-            mask: "chars"
+        const snapPoints = [0, ...SCENES.flatMap(s => [s.inAt, s.outAt]), TOTAL].map(p => p / TOTAL);
+
+        // Split y estado inicial
+        const splits = SCENES.map(({ id }) => {
+            const el = document.getElementById(id);
+            const split = new SplitText(el, { type: "chars", mask: "chars" });
+            gsap.set(split.chars, { yPercent: 105 });
+            return split;
         });
-        const splitClarity = new SplitText(clarity, {
-            type: "chars",
-            mask: "chars"
-        });
 
-
-        gsap.set([splitExperience.chars, splitClarity.chars], { yPercent: 105 });
-
-        let master = gsap.timeline({
+        // Timeline maestra
+        const master = gsap.timeline({
             scrollTrigger: {
-                trigger: '#track-el',
+                trigger: "#track-el",
                 start: "top top",
                 end: "bottom bottom",
-                scrub: true,       
-            }
+                scrub: 0.3,
+                snap: {
+                    snapTo: snapPoints,
+                    duration: { min: 1, max: 1 },
+                    delay: 0.05,
+                    ease: "power4.inOut",
+                },
+            },
         });
 
-        // ESCENA 1 
-        master.to(splitExperience.chars, {
-            yPercent: 0,
-            stagger: 0.04,
-         //   duration: 0.4,
-            ease: "power4.out"
-        }, 0);
+        // Tweens reutilizables
+        const animIn  = (chars, at) => master.to(chars, { yPercent: 0,    stagger: 0.04, ease: "power4.out" }, at);
+        const animOut = (chars, at) => master.to(chars, { yPercent: -105, stagger: 0.05, ease: "power4.in"  }, at);
 
-        // ESCENA 2
-        master.to(splitExperience.chars, {
-            yPercent: -105,
-            stagger: 0.03,
-        //    duration: 0.4,
-            ease: "power4.in"
-        }, 1);
-
-        // ESCENA 3 
-        master.to(splitClarity.chars, {
-            yPercent: 0,
-            stagger: 0.04,
-       ///     duration: 0.4,
-            ease: "power4.out"
-        }, 2.5);
-
-        // ESCENA 4 
-        master.to(splitClarity.chars, {
-            yPercent: -105,
-            stagger: 0.03,
-        //    duration: 0.6,
-            ease: "power4.in"
-        }, 3.2);
+        SCENES.forEach(({ inAt, outAt }, i) => {
+            animIn(splits[i].chars,  inAt);
+            animOut(splits[i].chars, outAt);
+        });
     });
 });
     
