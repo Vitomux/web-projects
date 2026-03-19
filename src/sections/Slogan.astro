@@ -1,5 +1,5 @@
 <section>
-        <div class="flex flex-col w-full h-screen relative bg-theme-lights-bg" id="track-el">
+        <div class="flex flex-col w-full h-[300svh] relative bg-theme-lights-bg" id="track-el">
             <div class="flex flex-col justify-center rounded-1xl bg-gradient-slogan w-full h-dvh  text-theme-lights items-center sticky top-0" id="slogan-box">
                 <div class="flex flex-col w-full  items-center justify-items-start absolute" id="experience-arr">
                     <h1 class="title-secondary leading-0">Built with</h1>
@@ -42,10 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
             scrollTrigger: {
                 trigger: '#track-el',
                 start: "top top",
-                end: "+=2000",
-                pin: true,
+                end: "bottom bottom",
                 scrub: true,       
-                anticipatePin: 1,
             }
         });
 
@@ -53,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         master.to(splitExperience.chars, {
             yPercent: 0,
             stagger: 0.04,
-            duration: 0.4,
+         //   duration: 0.4,
             ease: "power4.out"
         }, 0);
 
@@ -61,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         master.to(splitExperience.chars, {
             yPercent: -105,
             stagger: 0.03,
-            duration: 0.4,
+        //    duration: 0.4,
             ease: "power4.in"
         }, 1);
 
@@ -69,17 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
         master.to(splitClarity.chars, {
             yPercent: 0,
             stagger: 0.04,
-            duration: 0.4,
+       ///     duration: 0.4,
             ease: "power4.out"
-        }, 2);
+        }, 2.5);
 
         // ESCENA 4 
         master.to(splitClarity.chars, {
             yPercent: -105,
             stagger: 0.03,
-            duration: 0.6,
+        //    duration: 0.6,
             ease: "power4.in"
-        }, 2.6);
+        }, 3.2);
     });
 });
     

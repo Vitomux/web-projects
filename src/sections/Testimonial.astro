@@ -17,7 +17,6 @@ import TestiCard from "../components/TestiCard.astro";
     gsap.registerPlugin(ScrollTrigger)
 
     document.addEventListener("DOMContentLoaded", ( )=> {
-        const starter2 = document.getElementById("starter-2")
         const monster2 = document.getElementById("monster-2")
 
         gsap.fromTo( monster2,
@@ -26,14 +25,14 @@ import TestiCard from "../components/TestiCard.astro";
             duration: 0.8
             }, 
             {
-            x: "-108%", duration: 0.8, 
+            x: "-56%", duration: 0.8, 
             ease: "sine.in",
             scrollTrigger: {
-                trigger: starter2,
+                trigger: monster2,
                 start: "top bottom",
                 end: "68% top",
                 scrub: true,
-            //    markers: true,
+             //   markers: true,
             }
         })
     })
