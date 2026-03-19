@@ -17,7 +17,6 @@ import Card from "../components/Card.astro";
     gsap.registerPlugin(ScrollTrigger)
 
     document.addEventListener("DOMContentLoaded", ( )=> {
-        const starter = document.getElementById("starter")
         const monster = document.getElementById("monster")
 
         gsap.fromTo( monster,
@@ -26,14 +25,14 @@ import Card from "../components/Card.astro";
             duration: 0.8
             }, 
             {
-            x: "-20%", duration: 0.8, 
+            x: "-24%", duration: 0.8, 
             ease: "sine.in",
             scrollTrigger: {
-                trigger: starter,
-                start: "top 96%",
+                trigger: monster,
+                start: "top bottom",
                 end: "68% top",
                 scrub: true,
-            //    markers: true,
+           //     markers: true,
             }
         })
     })
